@@ -1,0 +1,62 @@
+# Deploy the FastAPI agent backend to Azure App Service.
+# Mirrors scripts/deploy/deploy-app.ps1: zip src/ + requirements.txt and push
+# via `az webapp deploy`. The App Service start command lives in infra/main.bicep
+# (uvicorn insurance_rag_agent.main:app).
+name: Deploy App
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "src/**"
+      - "requirements.txt"
+      - ".github/workflows/deploy-app.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy API
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build deployment package
+        run: |
+          mkdir -p .artifacts/api-staging
+          cp -r src .artifacts/api-staging/
+          cp requirements.txt .artifacts/api-staging/
+          (cd .artifacts/api-staging && zip -r ../api.zip . -x "**/__pycache__/*")
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy to App Service
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az webapp deploy \
+              --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+              --name "${{ vars.AZURE_API_APP_NAME }}" \
+              --src-path .artifacts/api.zip \
+              --type zip
+
+      - name: Health check
+        run: |
+          url="https://${{ vars.AZURE_API_APP_NAME }}.azurewebsites.net/health"
+          echo "Probing $url"
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$url" || true)
+            if [ "$code" = "200" ]; then echo "Healthy"; exit 0; fi
+            echo "Attempt $i: HTTP $code — retrying..."; sleep 15
+          done
+          echo "Health check did not return 200 (app may still be warming up)."

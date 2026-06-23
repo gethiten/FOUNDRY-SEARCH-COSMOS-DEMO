@@ -1,0 +1,16 @@
+# azd environment (contains secrets / generated outputs)
+.azure/
+
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Build & logs
+*.zip
+*.tar.zst
+*.log
+.DS_Store

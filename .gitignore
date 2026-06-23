@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets / environment files
+.env
+.env.*
+!.env.example
+
+# azd / Azure tooling
+.azure/
+
+# Build & deploy artifacts
+.artifacts/
+*.zip
+*.tar
+*.tar.zst
+
+# Logs
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/

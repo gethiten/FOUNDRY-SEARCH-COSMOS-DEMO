@@ -1,0 +1,39 @@
+# Pull-request CI: fast, credential-free checks (lint + byte-compile).
+# Runs on every PR targeting master and on manual dispatch.
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-compile:
+    name: Lint & compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Ruff
+        run: pip install ruff==0.8.4
+
+      # Fail only on real errors (syntax, undefined names, unused-import bugs).
+      # Style nits are reported as annotations but do not fail the build.
+      - name: Ruff (errors)
+        run: ruff check --output-format=github --select E9,F63,F7,F82 src scripts
+
+      - name: Ruff (style, non-blocking)
+        run: ruff check --output-format=github src scripts || true
+
+      # Byte-compile every module to catch syntax/import-time errors without
+      # needing Azure credentials or live services.
+      - name: Compile all sources
+        run: python -m compileall -q src scripts hosted-agents

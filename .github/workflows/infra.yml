@@ -1,0 +1,78 @@
+# Infrastructure (Bicep) pipeline.
+#   * Pull request -> what-if (preview the changes, never mutates anything)
+#   * Push to master -> deploy to the resource group
+# Authenticates to Azure with OIDC federated credentials (no stored secrets).
+name: Infra
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "infra/**"
+      - ".github/workflows/infra.yml"
+  push:
+    branches: [master]
+    paths:
+      - "infra/**"
+      - ".github/workflows/infra.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # required for OIDC login
+  contents: read
+
+jobs:
+  what-if:
+    name: What-if (PR preview)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deployment what-if
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az deployment group what-if \
+              --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+              --template-file infra/main.bicep \
+              --parameters infra/main.bicepparam
+
+  deploy:
+    name: Deploy infra
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Ensure resource group & deploy
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az group create \
+              --name "${{ vars.AZURE_RESOURCE_GROUP }}" \
+              --location "${{ vars.AZURE_LOCATION }}" \
+              --only-show-errors --output none
+            az deployment group create \
+              --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
+              --template-file infra/main.bicep \
+              --parameters infra/main.bicepparam \
+              --query "properties.provisioningState" -o tsv

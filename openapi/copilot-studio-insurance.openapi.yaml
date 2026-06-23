@@ -1,0 +1,114 @@
+swagger: "2.0"
+info:
+  title: Insurance Agentic-RAG Agent
+  version: 1.0.0
+  description: >-
+    Auto-insurance assistant that answers questions using agentic RAG over
+    Azure AI Search (knowledge base) and Azure Cosmos DB (policy & claims data).
+host: <your-api-app>.azurewebsites.net
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  oauth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token
+    scopes:
+      api://<api-app-registration-client-id>/access_as_application: Access the Insurance RAG API
+security:
+  - oauth2:
+      - api://<api-app-registration-client-id>/access_as_application
+paths:
+  /query:
+    post:
+      operationId: insuranceQuery
+      summary: Answer any auto-insurance question using policy/claims data and the knowledge base.
+      description: >-
+        Send the user's auto-insurance question. The agent decides whether to
+        retrieve specific account data (policies, claims, customers) from Cosmos
+        DB, conceptual answers from the Azure AI Search knowledge base, or both,
+        then returns a grounded answer. Examples: "show me policy POL-001",
+        "what does comprehensive coverage cover?", "what's my deductible on
+        POL-001 and what is a deductible?". Pass the user's message exactly as
+        typed. Include policy_id or customer_id only if the user provided one.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/QueryRequest'
+      responses:
+        200:
+          description: Grounded answer from the Insurance RAG agent.
+          schema:
+            $ref: '#/definitions/QueryResponse'
+  /health:
+    get:
+      operationId: healthCheck
+      summary: Service health and configuration check.
+      responses:
+        200:
+          description: Health status.
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              model:
+                type: string
+              search_index:
+                type: string
+              cosmos_database:
+                type: string
+              agent_ready:
+                type: boolean
+definitions:
+  QueryRequest:
+    type: object
+    required:
+      - question
+    properties:
+      question:
+        type: string
+        description: The user's natural-language auto-insurance question, passed exactly as typed.
+      policy_id:
+        type: string
+        description: Optional policy identifier such as POL-001.
+      customer_id:
+        type: string
+        description: Optional customer identifier such as CUST-001.
+      user_id:
+        type: string
+        description: Optional identifier of the calling user.
+  QueryResponse:
+    type: object
+    properties:
+      answer:
+        type: string
+        description: The grounded natural-language answer.
+      sources:
+        type: array
+        items:
+          type: string
+        description: Source document names or data sources used.
+      citations:
+        type: array
+        items:
+          $ref: '#/definitions/Citation'
+  Citation:
+    type: object
+    properties:
+      source:
+        type: string
+      title:
+        type: string
+      snippet:
+        type: string
+      score:
+        type: number

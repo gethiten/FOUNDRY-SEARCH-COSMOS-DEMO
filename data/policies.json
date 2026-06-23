@@ -1,0 +1,3320 @@
+[
+  {
+    "policyId": "POL-001",
+    "customerId": "CUST-051",
+    "policyNumber": "AU-72177252",
+    "status": "Active",
+    "effectiveDate": "2024-11-29",
+    "expirationDate": "2025-11-29",
+    "paymentPlan": "Annual",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-FLRH323P",
+        "year": 2017,
+        "make": "Toyota",
+        "model": "RAV4",
+        "trim": "Touring",
+        "vin": "NSM9X6W80FLRH323P",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "9202 Cedar Dr",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-U4DVDUFD",
+        "year": 2017,
+        "make": "Hyundai",
+        "model": "Elantra",
+        "trim": "Touring",
+        "vin": "WCYDG3L8WU4DVDUFD",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "9202 Cedar Dr",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 17000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-GG392BJJ",
+        "year": 2023,
+        "make": "Kia",
+        "model": "Telluride",
+        "trim": "Sport",
+        "vin": "HEUDTAWEVGG392BJJ",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "9202 Cedar Dr",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 15000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3055,
+      "billingCycleAmount": 1527.5
+    }
+  },
+  {
+    "policyId": "POL-002",
+    "customerId": "CUST-087",
+    "policyNumber": "AU-29642328",
+    "status": "Active",
+    "effectiveDate": "2024-07-01",
+    "expirationDate": "2025-07-01",
+    "paymentPlan": "Annual",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-8XSZ7Y2V",
+        "year": 2020,
+        "make": "Kia",
+        "model": "Sorento",
+        "trim": "Base",
+        "vin": "EY6T7V4978XSZ7Y2V",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "4345 Cedar Terrace",
+          "street2": "Apt 4C",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 20000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-YZ4VC9Y3",
+        "year": 2018,
+        "make": "Chevrolet",
+        "model": "Silverado",
+        "trim": "SE",
+        "vin": "7HN4UJW03YZ4VC9Y3",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "4345 Cedar Terrace",
+          "street2": "Apt 4C",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 10000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-29W9DM3Y",
+        "year": 2017,
+        "make": "Kia",
+        "model": "Telluride",
+        "trim": "SE",
+        "vin": "4FR125NCW29W9DM3Y",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "4345 Cedar Terrace",
+          "street2": "Apt 4C",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2529,
+      "billingCycleAmount": 632.25
+    }
+  },
+  {
+    "policyId": "POL-003",
+    "customerId": "CUST-042",
+    "policyNumber": "AU-51659033",
+    "status": "Pending Renewal",
+    "effectiveDate": "2024-09-05",
+    "expirationDate": "2025-09-05",
+    "paymentPlan": "Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-4NGLJ1A8",
+        "year": 2022,
+        "make": "Subaru",
+        "model": "Legacy",
+        "trim": "Touring",
+        "vin": "4PFFLUD254NGLJ1A8",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "9784 Madison St",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-AU9AN3KJ",
+        "year": 2024,
+        "make": "Toyota",
+        "model": "Camry",
+        "trim": "Base",
+        "vin": "DWYLLM1SUAU9AN3KJ",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "9784 Madison St",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 16500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-ZARTEACR",
+        "year": 2025,
+        "make": "Hyundai",
+        "model": "Tucson",
+        "trim": "Limited",
+        "vin": "4NSKX6MU8ZARTEACR",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "9784 Madison St",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 20500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-FR7EZ96T",
+        "year": 2022,
+        "make": "Toyota",
+        "model": "Camry",
+        "trim": "Limited",
+        "vin": "PY4NGVNUMFR7EZ96T",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "9784 Madison St",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 15000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3453,
+      "billingCycleAmount": 863.25
+    }
+  },
+  {
+    "policyId": "POL-004",
+    "customerId": "CUST-010",
+    "policyNumber": "AU-76782390",
+    "status": "Active",
+    "effectiveDate": "2024-06-19",
+    "expirationDate": "2025-06-19",
+    "paymentPlan": "Monthly",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-DPC3RR7G",
+        "year": 2015,
+        "make": "Ford",
+        "model": "F-150",
+        "trim": "Sport",
+        "vin": "TE09PFWG0DPC3RR7G",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "1726 Cherry Ln",
+          "street2": "Apt 17A",
+          "city": "Denver",
+          "state": "CO",
+          "postalCode": "80202",
+          "country": "USA"
+        },
+        "annualMileage": 10000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-962YZSFW",
+        "year": 2017,
+        "make": "Nissan",
+        "model": "Altima",
+        "trim": "Limited",
+        "vin": "9VA1PGY6T962YZSFW",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "1726 Cherry Ln",
+          "street2": "Apt 17A",
+          "city": "Denver",
+          "state": "CO",
+          "postalCode": "80202",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-7WB9HRAX",
+        "year": 2020,
+        "make": "Mazda",
+        "model": "CX-5",
+        "trim": "Sport",
+        "vin": "YR31ENJHT7WB9HRAX",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "1726 Cherry Ln",
+          "street2": "Apt 17A",
+          "city": "Denver",
+          "state": "CO",
+          "postalCode": "80202",
+          "country": "USA"
+        },
+        "annualMileage": 6500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3081,
+      "billingCycleAmount": 770.25
+    }
+  },
+  {
+    "policyId": "POL-005",
+    "customerId": "CUST-069",
+    "policyNumber": "AU-33507596",
+    "status": "Active",
+    "effectiveDate": "2025-02-01",
+    "expirationDate": "2026-02-01",
+    "paymentPlan": "Quarterly",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-WBUE7EZX",
+        "year": 2020,
+        "make": "Kia",
+        "model": "Sportage",
+        "trim": "Base",
+        "vin": "FBWV54PRJWBUE7EZX",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "6827 Cedar Blvd",
+          "street2": "",
+          "city": "Jacksonville",
+          "state": "FL",
+          "postalCode": "32202",
+          "country": "USA"
+        },
+        "annualMileage": 21500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-1U3VVA8J",
+        "year": 2023,
+        "make": "Mazda",
+        "model": "CX-9",
+        "trim": "Sport",
+        "vin": "89CDFBS4B1U3VVA8J",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "6827 Cedar Blvd",
+          "street2": "",
+          "city": "Jacksonville",
+          "state": "FL",
+          "postalCode": "32202",
+          "country": "USA"
+        },
+        "annualMileage": 9000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-M7R1R6HG",
+        "year": 2018,
+        "make": "Chevrolet",
+        "model": "Silverado",
+        "trim": "Touring",
+        "vin": "1KB76N1PHM7R1R6HG",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "6827 Cedar Blvd",
+          "street2": "",
+          "city": "Jacksonville",
+          "state": "FL",
+          "postalCode": "32202",
+          "country": "USA"
+        },
+        "annualMileage": 17000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2946,
+      "billingCycleAmount": 736.5
+    }
+  },
+  {
+    "policyId": "POL-006",
+    "customerId": "CUST-083",
+    "policyNumber": "AU-18289028",
+    "status": "Active",
+    "effectiveDate": "2024-01-26",
+    "expirationDate": "2025-01-25",
+    "paymentPlan": "Quarterly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-YKTV9M8J",
+        "year": 2022,
+        "make": "Honda",
+        "model": "HR-V",
+        "trim": "Sport",
+        "vin": "N1S949CM5YKTV9M8J",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "9189 River Ave",
+          "street2": "",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "annualMileage": 10000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-H7WSZSMY",
+        "year": 2018,
+        "make": "Hyundai",
+        "model": "Palisade",
+        "trim": "Touring",
+        "vin": "FBFWC5E5SH7WSZSMY",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "9189 River Ave",
+          "street2": "",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "annualMileage": 22000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-21RJC5A0",
+        "year": 2023,
+        "make": "Chevrolet",
+        "model": "Equinox",
+        "trim": "Limited",
+        "vin": "LZRXGZDB421RJC5A0",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "9189 River Ave",
+          "street2": "",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "annualMileage": 16500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2915,
+      "billingCycleAmount": 242.92
+    }
+  },
+  {
+    "policyId": "POL-007",
+    "customerId": "CUST-100",
+    "policyNumber": "AU-83889368",
+    "status": "Active",
+    "effectiveDate": "2024-02-09",
+    "expirationDate": "2025-02-08",
+    "paymentPlan": "Quarterly",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-0ZPKF8ZK",
+        "year": 2018,
+        "make": "Subaru",
+        "model": "Forester",
+        "trim": "Touring",
+        "vin": "DFD3JF5LC0ZPKF8ZK",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "6309 Jefferson Rd",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-DTALT7MX",
+        "year": 2025,
+        "make": "Jeep",
+        "model": "Grand Cherokee",
+        "trim": "Base",
+        "vin": "KC0UKZ5J4DTALT7MX",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "6309 Jefferson Rd",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 11500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-AST88NLR",
+        "year": 2018,
+        "make": "Jeep",
+        "model": "Wrangler",
+        "trim": "Base",
+        "vin": "K52MLGT8MAST88NLR",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "6309 Jefferson Rd",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 18500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-EDDN3Y72",
+        "year": 2015,
+        "make": "Mazda",
+        "model": "CX-5",
+        "trim": "SE",
+        "vin": "ZD02M5URREDDN3Y72",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "6309 Jefferson Rd",
+          "street2": "",
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77002",
+          "country": "USA"
+        },
+        "annualMileage": 9000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 4609,
+      "billingCycleAmount": 4609.0
+    }
+  },
+  {
+    "policyId": "POL-008",
+    "customerId": "CUST-088",
+    "policyNumber": "AU-90582418",
+    "status": "Pending Renewal",
+    "effectiveDate": "2024-06-04",
+    "expirationDate": "2025-06-04",
+    "paymentPlan": "Quarterly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-YY7YL60K",
+        "year": 2025,
+        "make": "Hyundai",
+        "model": "Santa Fe",
+        "trim": "Sport",
+        "vin": "KYGGNNR63YY7YL60K",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "3252 Hill St",
+          "street2": "",
+          "city": "Charlotte",
+          "state": "NC",
+          "postalCode": "28202",
+          "country": "USA"
+        },
+        "annualMileage": 21500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-Y6FLKT8U",
+        "year": 2018,
+        "make": "Toyota",
+        "model": "Camry",
+        "trim": "Limited",
+        "vin": "8LKMVKFETY6FLKT8U",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "3252 Hill St",
+          "street2": "",
+          "city": "Charlotte",
+          "state": "NC",
+          "postalCode": "28202",
+          "country": "USA"
+        },
+        "annualMileage": 14500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-8MNJ01SA",
+        "year": 2024,
+        "make": "Toyota",
+        "model": "Corolla",
+        "trim": "SE",
+        "vin": "VJKCTSA6C8MNJ01SA",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "3252 Hill St",
+          "street2": "",
+          "city": "Charlotte",
+          "state": "NC",
+          "postalCode": "28202",
+          "country": "USA"
+        },
+        "annualMileage": 7500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3127,
+      "billingCycleAmount": 3127.0
+    }
+  },
+  {
+    "policyId": "POL-009",
+    "customerId": "CUST-059",
+    "policyNumber": "AU-54812958",
+    "status": "Active",
+    "effectiveDate": "2024-08-26",
+    "expirationDate": "2025-08-26",
+    "paymentPlan": "Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-GJCE2YE7",
+        "year": 2018,
+        "make": "Mazda",
+        "model": "Mazda3",
+        "trim": "Limited",
+        "vin": "KNNDH5A0VGJCE2YE7",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "7763 Oak Terrace",
+          "street2": "",
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97204",
+          "country": "USA"
+        },
+        "annualMileage": 8500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-2F0SLJXF",
+        "year": 2023,
+        "make": "Nissan",
+        "model": "Pathfinder",
+        "trim": "Touring",
+        "vin": "UAZNX1S672F0SLJXF",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "7763 Oak Terrace",
+          "street2": "",
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97204",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-BJEU91TT",
+        "year": 2018,
+        "make": "Ford",
+        "model": "F-150",
+        "trim": "Limited",
+        "vin": "ENRZ96HVRBJEU91TT",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "7763 Oak Terrace",
+          "street2": "",
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97204",
+          "country": "USA"
+        },
+        "annualMileage": 14000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3153,
+      "billingCycleAmount": 3153.0
+    }
+  },
+  {
+    "policyId": "POL-010",
+    "customerId": "CUST-075",
+    "policyNumber": "AU-34511901",
+    "status": "Pending Renewal",
+    "effectiveDate": "2024-09-13",
+    "expirationDate": "2025-09-13",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-F8YASZ1A",
+        "year": 2018,
+        "make": "Toyota",
+        "model": "Corolla",
+        "trim": "Sport",
+        "vin": "EEH56JFNRF8YASZ1A",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "145 Jefferson Ave",
+          "street2": "",
+          "city": "Tampa",
+          "state": "FL",
+          "postalCode": "33602",
+          "country": "USA"
+        },
+        "annualMileage": 8000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-MBMFFZHF",
+        "year": 2014,
+        "make": "Hyundai",
+        "model": "Santa Fe",
+        "trim": "SE",
+        "vin": "KV5K27RR6MBMFFZHF",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "145 Jefferson Ave",
+          "street2": "",
+          "city": "Tampa",
+          "state": "FL",
+          "postalCode": "33602",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1767,
+      "billingCycleAmount": 441.75
+    }
+  },
+  {
+    "policyId": "POL-011",
+    "customerId": "CUST-093",
+    "policyNumber": "AU-91040536",
+    "status": "Active",
+    "effectiveDate": "2025-03-18",
+    "expirationDate": "2026-03-18",
+    "paymentPlan": "Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-84LLTDJT",
+        "year": 2022,
+        "make": "Honda",
+        "model": "Civic",
+        "trim": "Base",
+        "vin": "DZ4YEH6AR84LLTDJT",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "1070 Park Ln",
+          "street2": "",
+          "city": "Jacksonville",
+          "state": "FL",
+          "postalCode": "32202",
+          "country": "USA"
+        },
+        "annualMileage": 6500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-BX69R24P",
+        "year": 2015,
+        "make": "Jeep",
+        "model": "Wrangler",
+        "trim": "Touring",
+        "vin": "MBEYGJFTMBX69R24P",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "1070 Park Ln",
+          "street2": "",
+          "city": "Jacksonville",
+          "state": "FL",
+          "postalCode": "32202",
+          "country": "USA"
+        },
+        "annualMileage": 15500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1275,
+      "billingCycleAmount": 106.25
+    }
+  },
+  {
+    "policyId": "POL-012",
+    "customerId": "CUST-086",
+    "policyNumber": "AU-90880651",
+    "status": "Active",
+    "effectiveDate": "2024-02-16",
+    "expirationDate": "2025-02-15",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-S7KDN0M7",
+        "year": 2019,
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "trim": "Touring",
+        "vin": "ZAUG6AARKS7KDN0M7",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "4459 Cherry Dr",
+          "street2": "",
+          "city": "Nashville",
+          "state": "TN",
+          "postalCode": "37203",
+          "country": "USA"
+        },
+        "annualMileage": 21500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-RSMUHHE1",
+        "year": 2017,
+        "make": "Jeep",
+        "model": "Cherokee",
+        "trim": "Sport",
+        "vin": "5FKZZ0S75RSMUHHE1",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "4459 Cherry Dr",
+          "street2": "",
+          "city": "Nashville",
+          "state": "TN",
+          "postalCode": "37203",
+          "country": "USA"
+        },
+        "annualMileage": 18000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2412,
+      "billingCycleAmount": 603.0
+    }
+  },
+  {
+    "policyId": "POL-013",
+    "customerId": "CUST-049",
+    "policyNumber": "AU-82899257",
+    "status": "Pending Renewal",
+    "effectiveDate": "2025-03-23",
+    "expirationDate": "2026-03-23",
+    "paymentPlan": "Quarterly",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-63N2GGJK",
+        "year": 2019,
+        "make": "Jeep",
+        "model": "Cherokee",
+        "trim": "SE",
+        "vin": "77W6KJ44363N2GGJK",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "3168 Hill Terrace",
+          "street2": "",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 7500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-C7GLAGZ0",
+        "year": 2015,
+        "make": "Jeep",
+        "model": "Wrangler",
+        "trim": "Touring",
+        "vin": "AA3T9KTVWC7GLAGZ0",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "3168 Hill Terrace",
+          "street2": "",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 11500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-24VF77AG",
+        "year": 2015,
+        "make": "Toyota",
+        "model": "RAV4",
+        "trim": "Limited",
+        "vin": "05FUCYEXD24VF77AG",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "3168 Hill Terrace",
+          "street2": "",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 10000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1958,
+      "billingCycleAmount": 163.17
+    }
+  },
+  {
+    "policyId": "POL-014",
+    "customerId": "CUST-058",
+    "policyNumber": "AU-96627837",
+    "status": "Pending Renewal",
+    "effectiveDate": "2025-01-08",
+    "expirationDate": "2026-01-08",
+    "paymentPlan": "Monthly",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-UN95V32Y",
+        "year": 2016,
+        "make": "Toyota",
+        "model": "RAV4",
+        "trim": "Base",
+        "vin": "UWWBJ7YBBUN95V32Y",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "6338 Maple Place",
+          "street2": "Apt 24D",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 16500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-H287DX1D",
+        "year": 2021,
+        "make": "Kia",
+        "model": "Soul",
+        "trim": "Sport",
+        "vin": "GCZTJPUCKH287DX1D",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "6338 Maple Place",
+          "street2": "Apt 24D",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 16000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-KUE9DWZB",
+        "year": 2017,
+        "make": "Chevrolet",
+        "model": "Silverado",
+        "trim": "SE",
+        "vin": "MVPJN3R02KUE9DWZB",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "6338 Maple Place",
+          "street2": "Apt 24D",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 18500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3233,
+      "billingCycleAmount": 1616.5
+    }
+  },
+  {
+    "policyId": "POL-015",
+    "customerId": "CUST-072",
+    "policyNumber": "AU-88268053",
+    "status": "Active",
+    "effectiveDate": "2024-11-23",
+    "expirationDate": "2025-11-23",
+    "paymentPlan": "Monthly",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-RT2252J5",
+        "year": 2023,
+        "make": "Ford",
+        "model": "Edge",
+        "trim": "SE",
+        "vin": "6161SA3GYRT2252J5",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "1285 Cherry Ave",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 15500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-FFCHK5E7",
+        "year": 2019,
+        "make": "Mazda",
+        "model": "CX-30",
+        "trim": "Limited",
+        "vin": "E2YRT2FPZFFCHK5E7",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "1285 Cherry Ave",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 13500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2011,
+      "billingCycleAmount": 167.58
+    }
+  },
+  {
+    "policyId": "POL-016",
+    "customerId": "CUST-097",
+    "policyNumber": "AU-28021185",
+    "status": "Active",
+    "effectiveDate": "2024-05-29",
+    "expirationDate": "2025-05-29",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-393Y6BLS",
+        "year": 2016,
+        "make": "Chevrolet",
+        "model": "Silverado",
+        "trim": "Limited",
+        "vin": "8AF32AEBE393Y6BLS",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "9241 Willow Way",
+          "street2": "",
+          "city": "Phoenix",
+          "state": "AZ",
+          "postalCode": "85001",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-6YMTVR0F",
+        "year": 2025,
+        "make": "Subaru",
+        "model": "Outback",
+        "trim": "Limited",
+        "vin": "HXWWV98706YMTVR0F",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "9241 Willow Way",
+          "street2": "",
+          "city": "Phoenix",
+          "state": "AZ",
+          "postalCode": "85001",
+          "country": "USA"
+        },
+        "annualMileage": 10000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-8G4JRD6E",
+        "year": 2020,
+        "make": "Honda",
+        "model": "Accord",
+        "trim": "Touring",
+        "vin": "820TFJUR28G4JRD6E",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "9241 Willow Way",
+          "street2": "",
+          "city": "Phoenix",
+          "state": "AZ",
+          "postalCode": "85001",
+          "country": "USA"
+        },
+        "annualMileage": 19000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3042,
+      "billingCycleAmount": 253.5
+    }
+  },
+  {
+    "policyId": "POL-017",
+    "customerId": "CUST-066",
+    "policyNumber": "AU-31094692",
+    "status": "Active",
+    "effectiveDate": "2025-01-27",
+    "expirationDate": "2026-01-27",
+    "paymentPlan": "Annual",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-YR0FCNDZ",
+        "year": 2018,
+        "make": "Ford",
+        "model": "Maverick",
+        "trim": "SE",
+        "vin": "FXBU2FP3JYR0FCNDZ",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "6727 Forest Ln",
+          "street2": "",
+          "city": "Cleveland",
+          "state": "OH",
+          "postalCode": "44114",
+          "country": "USA"
+        },
+        "annualMileage": 17500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-HURS1E42",
+        "year": 2017,
+        "make": "Toyota",
+        "model": "Corolla",
+        "trim": "Limited",
+        "vin": "M40F8FNHFHURS1E42",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "6727 Forest Ln",
+          "street2": "",
+          "city": "Cleveland",
+          "state": "OH",
+          "postalCode": "44114",
+          "country": "USA"
+        },
+        "annualMileage": 15500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-AWVW67M5",
+        "year": 2021,
+        "make": "Ford",
+        "model": "Maverick",
+        "trim": "Limited",
+        "vin": "DX4YM2T4KAWVW67M5",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "6727 Forest Ln",
+          "street2": "",
+          "city": "Cleveland",
+          "state": "OH",
+          "postalCode": "44114",
+          "country": "USA"
+        },
+        "annualMileage": 14500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-RJEEE4JX",
+        "year": 2016,
+        "make": "Toyota",
+        "model": "Tacoma",
+        "trim": "Limited",
+        "vin": "26J2TMN7ARJEEE4JX",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "6727 Forest Ln",
+          "street2": "",
+          "city": "Cleveland",
+          "state": "OH",
+          "postalCode": "44114",
+          "country": "USA"
+        },
+        "annualMileage": 7500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3629,
+      "billingCycleAmount": 907.25
+    }
+  },
+  {
+    "policyId": "POL-018",
+    "customerId": "CUST-026",
+    "policyNumber": "AU-23985043",
+    "status": "Pending Renewal",
+    "effectiveDate": "2024-12-20",
+    "expirationDate": "2025-12-20",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Metro Risk Advisors",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-KU7SCDN8",
+        "year": 2023,
+        "make": "Kia",
+        "model": "Soul",
+        "trim": "Limited",
+        "vin": "JKG36FKMDKU7SCDN8",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "264 Park Place",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 8500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-5K9G5UPY",
+        "year": 2016,
+        "make": "Subaru",
+        "model": "Legacy",
+        "trim": "SE",
+        "vin": "5JMYAR0GG5K9G5UPY",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "264 Park Place",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 22000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-VTPA2GU5",
+        "year": 2017,
+        "make": "Subaru",
+        "model": "Forester",
+        "trim": "SE",
+        "vin": "Z5J14FKD3VTPA2GU5",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "264 Park Place",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 15000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-1EAKC5K0",
+        "year": 2024,
+        "make": "Nissan",
+        "model": "Rogue",
+        "trim": "Base",
+        "vin": "9LDS07RJF1EAKC5K0",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "264 Park Place",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 6500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3153,
+      "billingCycleAmount": 788.25
+    }
+  },
+  {
+    "policyId": "POL-019",
+    "customerId": "CUST-027",
+    "policyNumber": "AU-23484605",
+    "status": "Active",
+    "effectiveDate": "2025-01-16",
+    "expirationDate": "2026-01-16",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-D1G940E0",
+        "year": 2019,
+        "make": "Chevrolet",
+        "model": "Silverado",
+        "trim": "Touring",
+        "vin": "J12EE13FBD1G940E0",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "4328 Madison Terrace",
+          "street2": "",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "annualMileage": 8000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-Y41K0SW9",
+        "year": 2018,
+        "make": "Hyundai",
+        "model": "Sonata",
+        "trim": "SE",
+        "vin": "BNG1L8847Y41K0SW9",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "4328 Madison Terrace",
+          "street2": "",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        },
+        "annualMileage": 17500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2012,
+      "billingCycleAmount": 503.0
+    }
+  },
+  {
+    "policyId": "POL-020",
+    "customerId": "CUST-065",
+    "policyNumber": "AU-94318027",
+    "status": "Active",
+    "effectiveDate": "2024-09-14",
+    "expirationDate": "2025-09-14",
+    "paymentPlan": "Quarterly",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-K8DXFK7B",
+        "year": 2025,
+        "make": "Kia",
+        "model": "Sportage",
+        "trim": "SE",
+        "vin": "L8BZLSM3SK8DXFK7B",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "3004 Willow Terrace",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 19000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-CUTXBPUY",
+        "year": 2022,
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "trim": "Sport",
+        "vin": "WMC4DJU8XCUTXBPUY",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "3004 Willow Terrace",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 20000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-BSTR4511",
+        "year": 2020,
+        "make": "Honda",
+        "model": "Pilot",
+        "trim": "Base",
+        "vin": "3D2DP99MYBSTR4511",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "3004 Willow Terrace",
+          "street2": "",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        },
+        "annualMileage": 6500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3115,
+      "billingCycleAmount": 1557.5
+    }
+  },
+  {
+    "policyId": "POL-021",
+    "customerId": "CUST-021",
+    "policyNumber": "AU-93623961",
+    "status": "Active",
+    "effectiveDate": "2024-07-03",
+    "expirationDate": "2025-07-03",
+    "paymentPlan": "Quarterly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-AAXM1NFD",
+        "year": 2025,
+        "make": "Mazda",
+        "model": "Mazda6",
+        "trim": "Touring",
+        "vin": "82LSSYRL6AAXM1NFD",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "1852 Walnut Place",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 9000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-N1404EEP",
+        "year": 2015,
+        "make": "Toyota",
+        "model": "Camry",
+        "trim": "Base",
+        "vin": "Z2C3S1965N1404EEP",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "1852 Walnut Place",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 17500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-VNN57656",
+        "year": 2022,
+        "make": "Toyota",
+        "model": "Tacoma",
+        "trim": "Touring",
+        "vin": "ZWK09CGRFVNN57656",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "1852 Walnut Place",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 19000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-TH06M5UC",
+        "year": 2014,
+        "make": "Honda",
+        "model": "Accord",
+        "trim": "Limited",
+        "vin": "GCPLNZ8W5TH06M5UC",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "1852 Walnut Place",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 9500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 3228,
+      "billingCycleAmount": 269.0
+    }
+  },
+  {
+    "policyId": "POL-022",
+    "customerId": "CUST-041",
+    "policyNumber": "AU-22960787",
+    "status": "Active",
+    "effectiveDate": "2024-02-29",
+    "expirationDate": "2025-02-28",
+    "paymentPlan": "Monthly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-RD51WG99",
+        "year": 2015,
+        "make": "Toyota",
+        "model": "Tacoma",
+        "trim": "Touring",
+        "vin": "UNN5TA4FTRD51WG99",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "4785 River Terrace",
+          "street2": "",
+          "city": "Columbus",
+          "state": "OH",
+          "postalCode": "43215",
+          "country": "USA"
+        },
+        "annualMileage": 21500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-R1D5JSM8",
+        "year": 2018,
+        "make": "Ford",
+        "model": "Maverick",
+        "trim": "Sport",
+        "vin": "2F0B865TWR1D5JSM8",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "4785 River Terrace",
+          "street2": "",
+          "city": "Columbus",
+          "state": "OH",
+          "postalCode": "43215",
+          "country": "USA"
+        },
+        "annualMileage": 7500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-JY3XER3G",
+        "year": 2020,
+        "make": "Nissan",
+        "model": "Frontier",
+        "trim": "Limited",
+        "vin": "XG0W6C4A2JY3XER3G",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "4785 River Terrace",
+          "street2": "",
+          "city": "Columbus",
+          "state": "OH",
+          "postalCode": "43215",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-NT9772P4",
+        "year": 2024,
+        "make": "Nissan",
+        "model": "Rogue",
+        "trim": "Touring",
+        "vin": "A1N3ZKNF9NT9772P4",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "4785 River Terrace",
+          "street2": "",
+          "city": "Columbus",
+          "state": "OH",
+          "postalCode": "43215",
+          "country": "USA"
+        },
+        "annualMileage": 22000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 5021,
+      "billingCycleAmount": 5021.0
+    }
+  },
+  {
+    "policyId": "POL-023",
+    "customerId": "CUST-073",
+    "policyNumber": "AU-29754680",
+    "status": "Pending Renewal",
+    "effectiveDate": "2024-09-03",
+    "expirationDate": "2025-09-03",
+    "paymentPlan": "Quarterly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-C1PNY55F",
+        "year": 2015,
+        "make": "Nissan",
+        "model": "Pathfinder",
+        "trim": "Touring",
+        "vin": "T1JU8NG6LC1PNY55F",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "930 Hill Terrace",
+          "street2": "",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 9500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-9Y66VAG2",
+        "year": 2016,
+        "make": "Kia",
+        "model": "Soul",
+        "trim": "Sport",
+        "vin": "2G6WZ7YG29Y66VAG2",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "930 Hill Terrace",
+          "street2": "",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75201",
+          "country": "USA"
+        },
+        "annualMileage": 6000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2670,
+      "billingCycleAmount": 2670.0
+    }
+  },
+  {
+    "policyId": "POL-024",
+    "customerId": "CUST-040",
+    "policyNumber": "AU-41865525",
+    "status": "Active",
+    "effectiveDate": "2024-05-21",
+    "expirationDate": "2025-05-21",
+    "paymentPlan": "Monthly",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-7ZRTAX03",
+        "year": 2022,
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "trim": "Sport",
+        "vin": "4HFZYJX5B7ZRTAX03",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "2878 Jefferson Dr",
+          "street2": "",
+          "city": "Colorado Springs",
+          "state": "CO",
+          "postalCode": "80903",
+          "country": "USA"
+        },
+        "annualMileage": 20000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-G4JU2Z3J",
+        "year": 2018,
+        "make": "Honda",
+        "model": "HR-V",
+        "trim": "Limited",
+        "vin": "D73UDZP9EG4JU2Z3J",
+        "color": "Green",
+        "garagingAddress": {
+          "street1": "2878 Jefferson Dr",
+          "street2": "",
+          "city": "Colorado Springs",
+          "state": "CO",
+          "postalCode": "80903",
+          "country": "USA"
+        },
+        "annualMileage": 13500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2030,
+      "billingCycleAmount": 507.5
+    }
+  },
+  {
+    "policyId": "POL-025",
+    "customerId": "CUST-061",
+    "policyNumber": "AU-33402011",
+    "status": "Active",
+    "effectiveDate": "2024-12-26",
+    "expirationDate": "2025-12-26",
+    "paymentPlan": "Annual",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-VLYUB9V3",
+        "year": 2014,
+        "make": "Mazda",
+        "model": "CX-9",
+        "trim": "Limited",
+        "vin": "NXR8YWUBWVLYUB9V3",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "7103 Madison Ct",
+          "street2": "Apt 3A",
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97204",
+          "country": "USA"
+        },
+        "annualMileage": 6000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-GB1XCP8C",
+        "year": 2018,
+        "make": "Toyota",
+        "model": "Camry",
+        "trim": "Base",
+        "vin": "SZEJK9ZS6GB1XCP8C",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "7103 Madison Ct",
+          "street2": "Apt 3A",
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97204",
+          "country": "USA"
+        },
+        "annualMileage": 7000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1447,
+      "billingCycleAmount": 120.58
+    }
+  },
+  {
+    "policyId": "POL-026",
+    "customerId": "CUST-022",
+    "policyNumber": "AU-89738693",
+    "status": "Pending Renewal",
+    "effectiveDate": "2025-04-29",
+    "expirationDate": "2026-04-29",
+    "paymentPlan": "Monthly",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-8A9B7RTF",
+        "year": 2021,
+        "make": "Kia",
+        "model": "Forte",
+        "trim": "SE",
+        "vin": "6Z7LZ58UC8A9B7RTF",
+        "color": "Black",
+        "garagingAddress": {
+          "street1": "1837 Maple Dr",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 12000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-8LL13YKG",
+        "year": 2014,
+        "make": "Jeep",
+        "model": "Renegade",
+        "trim": "SE",
+        "vin": "N5W5SG6168LL13YKG",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "1837 Maple Dr",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 19000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-PE1VGU3T",
+        "year": 2015,
+        "make": "Mazda",
+        "model": "Mazda3",
+        "trim": "SE",
+        "vin": "NVW749CGSPE1VGU3T",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "1837 Maple Dr",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-D4VH168H",
+        "year": 2023,
+        "make": "Nissan",
+        "model": "Pathfinder",
+        "trim": "SE",
+        "vin": "5E92PL7P6D4VH168H",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "1837 Maple Dr",
+          "street2": "",
+          "city": "Chicago",
+          "state": "IL",
+          "postalCode": "60601",
+          "country": "USA"
+        },
+        "annualMileage": 17500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 4639,
+      "billingCycleAmount": 2319.5
+    }
+  },
+  {
+    "policyId": "POL-027",
+    "customerId": "CUST-081",
+    "policyNumber": "AU-85871524",
+    "status": "Active",
+    "effectiveDate": "2025-04-09",
+    "expirationDate": "2026-04-09",
+    "paymentPlan": "Annual",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-UFF8H7PH",
+        "year": 2017,
+        "make": "Ford",
+        "model": "Escape",
+        "trim": "Touring",
+        "vin": "L2R9149NRUFF8H7PH",
+        "color": "Gray",
+        "garagingAddress": {
+          "street1": "7259 Washington Blvd",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 17000,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-80P4HBNR",
+        "year": 2022,
+        "make": "Subaru",
+        "model": "Legacy",
+        "trim": "Touring",
+        "vin": "HMSAGRP3880P4HBNR",
+        "color": "Red",
+        "garagingAddress": {
+          "street1": "7259 Washington Blvd",
+          "street2": "",
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27601",
+          "country": "USA"
+        },
+        "annualMileage": 15000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2579,
+      "billingCycleAmount": 1289.5
+    }
+  },
+  {
+    "policyId": "POL-028",
+    "customerId": "CUST-047",
+    "policyNumber": "AU-48947119",
+    "status": "Active",
+    "effectiveDate": "2024-02-25",
+    "expirationDate": "2025-02-24",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Lakeside Insurance Group",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-SF711F8L",
+        "year": 2014,
+        "make": "Mazda",
+        "model": "Mazda3",
+        "trim": "Limited",
+        "vin": "257THV0LNSF711F8L",
+        "color": "Blue",
+        "garagingAddress": {
+          "street1": "3709 Walnut Blvd",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 17000,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-MKSB7BEY",
+        "year": 2018,
+        "make": "Jeep",
+        "model": "Cherokee",
+        "trim": "Base",
+        "vin": "PZM1C8RUAMKSB7BEY",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "3709 Walnut Blvd",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-L0WM2LWY",
+        "year": 2024,
+        "make": "Ford",
+        "model": "Escape",
+        "trim": "SE",
+        "vin": "38CYL9A1BL0WM2LWY",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "3709 Walnut Blvd",
+          "street2": "",
+          "city": "Tempe",
+          "state": "AZ",
+          "postalCode": "85281",
+          "country": "USA"
+        },
+        "annualMileage": 17000,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 2826,
+      "billingCycleAmount": 1413.0
+    }
+  },
+  {
+    "policyId": "POL-029",
+    "customerId": "CUST-029",
+    "policyNumber": "AU-59815759",
+    "status": "Active",
+    "effectiveDate": "2024-09-21",
+    "expirationDate": "2025-09-21",
+    "paymentPlan": "Annual",
+    "agency": "Northview Coverage Partners",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-K92UM7TP",
+        "year": 2019,
+        "make": "Mazda",
+        "model": "Mazda6",
+        "trim": "Touring",
+        "vin": "X3T6A8YETK92UM7TP",
+        "color": "White",
+        "garagingAddress": {
+          "street1": "8894 Forest Terrace",
+          "street2": "",
+          "city": "Colorado Springs",
+          "state": "CO",
+          "postalCode": "80903",
+          "country": "USA"
+        },
+        "annualMileage": 10500,
+        "usage": "Pleasure",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 500
+          },
+          "comprehensive": {
+            "deductible": 500
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": false
+        }
+      },
+      {
+        "vehicleId": "VEH-9GM5CXMF",
+        "year": 2023,
+        "make": "Nissan",
+        "model": "Sentra",
+        "trim": "SE",
+        "vin": "NYG34NYSD9GM5CXMF",
+        "color": "Silver",
+        "garagingAddress": {
+          "street1": "8894 Forest Terrace",
+          "street2": "",
+          "city": "Colorado Springs",
+          "state": "CO",
+          "postalCode": "80903",
+          "country": "USA"
+        },
+        "annualMileage": 16500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": false,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1942,
+      "billingCycleAmount": 1942.0
+    }
+  },
+  {
+    "policyId": "POL-030",
+    "customerId": "CUST-007",
+    "policyNumber": "AU-96560560",
+    "status": "Active",
+    "effectiveDate": "2024-07-01",
+    "expirationDate": "2025-07-01",
+    "paymentPlan": "Semi-Annual",
+    "agency": "Summit Auto Agency",
+    "vehicles": [
+      {
+        "vehicleId": "VEH-ESXU68PV",
+        "year": 2025,
+        "make": "Subaru",
+        "model": "Outback",
+        "trim": "Sport",
+        "vin": "H6K9P7AHYESXU68PV",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "1760 Hill Dr",
+          "street2": "",
+          "city": "Charlotte",
+          "state": "NC",
+          "postalCode": "28202",
+          "country": "USA"
+        },
+        "annualMileage": 20500,
+        "usage": "Business",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 250
+          },
+          "comprehensive": {
+            "deductible": 250
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      },
+      {
+        "vehicleId": "VEH-WR5TPYWT",
+        "year": 2022,
+        "make": "Subaru",
+        "model": "Ascent",
+        "trim": "Sport",
+        "vin": "BPMTH5PHGWR5TPYWT",
+        "color": "Burgundy",
+        "garagingAddress": {
+          "street1": "1760 Hill Dr",
+          "street2": "",
+          "city": "Charlotte",
+          "state": "NC",
+          "postalCode": "28202",
+          "country": "USA"
+        },
+        "annualMileage": 13500,
+        "usage": "Commute",
+        "coverages": {
+          "liability": {
+            "bodilyInjury": "100/300",
+            "propertyDamage": 50000
+          },
+          "collision": {
+            "deductible": 1000
+          },
+          "comprehensive": {
+            "deductible": 1000
+          },
+          "roadsideAssistance": true,
+          "rentalReimbursement": true
+        }
+      }
+    ],
+    "premium": {
+      "writtenPremium": 1876,
+      "billingCycleAmount": 469.0
+    }
+  }
+]

@@ -1,0 +1,740 @@
+[
+  {
+    "claimId": "CLM-001",
+    "policyId": "POL-001",
+    "customerId": "CUST-051",
+    "claimNumber": "CL-2026-1001",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2026-01-21",
+    "reportedDate": "2026-01-23",
+    "vehicleId": "VEH-GG392BJJ",
+    "lossDetails": {
+      "cause": "Transmission failure",
+      "description": "Breakdown claim involving 2023 Kia Telluride. Primary loss event: transmission failure.",
+      "location": "Seattle, WA"
+    },
+    "financials": {
+      "estimateAmount": 1752,
+      "paidAmount": 1193.91,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Lockout Assistance",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2026-01-23",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2023 Kia Telluride. Initial cause reported as transmission failure."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-002",
+    "policyId": "POL-019",
+    "customerId": "CUST-027",
+    "claimNumber": "CL-2025-1002",
+    "claimType": "Breakdown",
+    "status": "Open",
+    "incidentDate": "2025-08-31",
+    "reportedDate": "2025-09-04",
+    "vehicleId": "VEH-D1G940E0",
+    "lossDetails": {
+      "cause": "Starter motor issue",
+      "description": "Breakdown claim involving 2019 Chevrolet Silverado. Primary loss event: starter motor issue.",
+      "location": "Austin, TX"
+    },
+    "financials": {
+      "estimateAmount": 644,
+      "paidAmount": 602.67,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Lockout Assistance",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-09-04",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2019 Chevrolet Silverado. Initial cause reported as starter motor issue."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2025-09-05",
+        "author": "Claims Adjuster",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Tire Change. Current estimate set at $644.00."
+      },
+      {
+        "noteId": "NOTE-3",
+        "createdAt": "2025-09-07",
+        "author": "Claims Adjuster",
+        "text": "Resolution update: Mechanical diagnosis completed and the customer resumed use after repairs. Paid amount to date is $602.67."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-003",
+    "policyId": "POL-006",
+    "customerId": "CUST-083",
+    "claimNumber": "CL-2025-1003",
+    "claimType": "Accident",
+    "status": "In Review",
+    "incidentDate": "2025-05-10",
+    "reportedDate": "2025-05-10",
+    "vehicleId": "VEH-21RJC5A0",
+    "lossDetails": {
+      "cause": "Rear-end collision",
+      "description": "Accident claim involving 2023 Chevrolet Equinox. Primary loss event: rear-end collision.",
+      "location": "Austin, TX"
+    },
+    "financials": {
+      "estimateAmount": 6460,
+      "paidAmount": 0,
+      "deductibleApplied": 500
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-05-10",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2023 Chevrolet Equinox. Initial cause reported as rear-end collision."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-004",
+    "policyId": "POL-020",
+    "customerId": "CUST-065",
+    "claimNumber": "CL-2024-1004",
+    "claimType": "Accident",
+    "status": "In Review",
+    "incidentDate": "2024-02-15",
+    "reportedDate": "2024-02-19",
+    "vehicleId": "VEH-K8DXFK7B",
+    "lossDetails": {
+      "cause": "Rear-end collision",
+      "description": "Accident claim involving 2025 Kia Sportage. Primary loss event: rear-end collision.",
+      "location": "Seattle, WA"
+    },
+    "financials": {
+      "estimateAmount": 5895,
+      "paidAmount": 0,
+      "deductibleApplied": 1000
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-02-19",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2025 Kia Sportage. Initial cause reported as rear-end collision."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2024-02-20",
+        "author": "Claims Adjuster",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Repair referral. Current estimate set at $5,895.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-005",
+    "policyId": "POL-007",
+    "customerId": "CUST-100",
+    "claimNumber": "CL-2025-1005",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2025-08-30",
+    "reportedDate": "2025-09-03",
+    "vehicleId": "VEH-0ZPKF8ZK",
+    "lossDetails": {
+      "cause": "Battery failure",
+      "description": "Breakdown claim involving 2018 Subaru Forester. Primary loss event: battery failure.",
+      "location": "Houston, TX"
+    },
+    "financials": {
+      "estimateAmount": 2450,
+      "paidAmount": 0,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Battery Jump",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-09-03",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2018 Subaru Forester. Initial cause reported as battery failure."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2025-09-04",
+        "author": "Roadside Coordinator",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Lockout Assistance. Current estimate set at $2,450.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-006",
+    "policyId": "POL-004",
+    "customerId": "CUST-010",
+    "claimNumber": "CL-2026-1006",
+    "claimType": "Breakdown",
+    "status": "Paid",
+    "incidentDate": "2026-01-04",
+    "reportedDate": "2026-01-07",
+    "vehicleId": "VEH-DPC3RR7G",
+    "lossDetails": {
+      "cause": "Battery failure",
+      "description": "Breakdown claim involving 2015 Ford F-150. Primary loss event: battery failure.",
+      "location": "Denver, CO"
+    },
+    "financials": {
+      "estimateAmount": 892,
+      "paidAmount": 349.71,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Battery Jump",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2026-01-07",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2015 Ford F-150. Initial cause reported as battery failure."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2026-01-08",
+        "author": "Roadside Coordinator",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Lockout Assistance. Current estimate set at $892.00."
+      },
+      {
+        "noteId": "NOTE-3",
+        "createdAt": "2026-01-10",
+        "author": "Claims Adjuster",
+        "text": "Resolution update: Repair shop confirmed the failed component and completed service under policy benefits. Paid amount to date is $349.71."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-007",
+    "policyId": "POL-024",
+    "customerId": "CUST-040",
+    "claimNumber": "CL-2024-1007",
+    "claimType": "Accident",
+    "status": "Open",
+    "incidentDate": "2024-10-28",
+    "reportedDate": "2024-11-01",
+    "vehicleId": "VEH-G4JU2Z3J",
+    "lossDetails": {
+      "cause": "Intersection impact",
+      "description": "Accident claim involving 2018 Honda HR-V. Primary loss event: intersection impact.",
+      "location": "Colorado Springs, CO"
+    },
+    "financials": {
+      "estimateAmount": 2114,
+      "paidAmount": 0,
+      "deductibleApplied": 500
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-11-01",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2018 Honda HR-V. Initial cause reported as intersection impact."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2024-11-02",
+        "author": "Claims Adjuster",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Repair referral. Current estimate set at $2,114.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-008",
+    "policyId": "POL-011",
+    "customerId": "CUST-093",
+    "claimNumber": "CL-2024-1008",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2024-07-23",
+    "reportedDate": "2024-07-23",
+    "vehicleId": "VEH-84LLTDJT",
+    "lossDetails": {
+      "cause": "Engine overheating",
+      "description": "Breakdown claim involving 2022 Honda Civic. Primary loss event: engine overheating.",
+      "location": "Jacksonville, FL"
+    },
+    "financials": {
+      "estimateAmount": 2198,
+      "paidAmount": 1652.64,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Tire Change",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-07-23",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2022 Honda Civic. Initial cause reported as engine overheating."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-009",
+    "policyId": "POL-017",
+    "customerId": "CUST-066",
+    "claimNumber": "CL-2024-1009",
+    "claimType": "Breakdown",
+    "status": "Closed",
+    "incidentDate": "2024-02-17",
+    "reportedDate": "2024-02-21",
+    "vehicleId": "VEH-HURS1E42",
+    "lossDetails": {
+      "cause": "Transmission failure",
+      "description": "Breakdown claim involving 2017 Toyota Corolla. Primary loss event: transmission failure.",
+      "location": "Cleveland, OH"
+    },
+    "financials": {
+      "estimateAmount": 1480,
+      "paidAmount": 0,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Tire Change",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-02-21",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2017 Toyota Corolla. Initial cause reported as transmission failure."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2024-02-22",
+        "author": "Roadside Coordinator",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Tire Change. Current estimate set at $1,480.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-010",
+    "policyId": "POL-027",
+    "customerId": "CUST-081",
+    "claimNumber": "CL-2025-1010",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2025-03-04",
+    "reportedDate": "2025-03-07",
+    "vehicleId": "VEH-80P4HBNR",
+    "lossDetails": {
+      "cause": "Alternator malfunction",
+      "description": "Breakdown claim involving 2022 Subaru Legacy. Primary loss event: alternator malfunction.",
+      "location": "Raleigh, NC"
+    },
+    "financials": {
+      "estimateAmount": 391,
+      "paidAmount": 0,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Fuel Delivery",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-03-07",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2022 Subaru Legacy. Initial cause reported as alternator malfunction."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2025-03-08",
+        "author": "Roadside Coordinator",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Tow. Current estimate set at $391.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-011",
+    "policyId": "POL-003",
+    "customerId": "CUST-042",
+    "claimNumber": "CL-2025-1011",
+    "claimType": "Accident",
+    "status": "Open",
+    "incidentDate": "2025-10-14",
+    "reportedDate": "2025-10-18",
+    "vehicleId": "VEH-ZARTEACR",
+    "lossDetails": {
+      "cause": "Rear-end collision",
+      "description": "Accident claim involving 2025 Hyundai Tucson. Primary loss event: rear-end collision.",
+      "location": "Houston, TX"
+    },
+    "financials": {
+      "estimateAmount": 9260,
+      "paidAmount": 0,
+      "deductibleApplied": 250
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-10-18",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2025 Hyundai Tucson. Initial cause reported as rear-end collision."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-012",
+    "policyId": "POL-022",
+    "customerId": "CUST-041",
+    "claimNumber": "CL-2025-1012",
+    "claimType": "Accident",
+    "status": "In Review",
+    "incidentDate": "2025-07-09",
+    "reportedDate": "2025-07-12",
+    "vehicleId": "VEH-RD51WG99",
+    "lossDetails": {
+      "cause": "Intersection impact",
+      "description": "Accident claim involving 2015 Toyota Tacoma. Primary loss event: intersection impact.",
+      "location": "Columbus, OH"
+    },
+    "financials": {
+      "estimateAmount": 7461,
+      "paidAmount": 0,
+      "deductibleApplied": 250
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-07-12",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2015 Toyota Tacoma. Initial cause reported as intersection impact."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-013",
+    "policyId": "POL-028",
+    "customerId": "CUST-047",
+    "claimNumber": "CL-2025-1013",
+    "claimType": "Accident",
+    "status": "In Review",
+    "incidentDate": "2025-08-24",
+    "reportedDate": "2025-08-26",
+    "vehicleId": "VEH-L0WM2LWY",
+    "lossDetails": {
+      "cause": "Parking lot collision",
+      "description": "Accident claim involving 2024 Ford Escape. Primary loss event: parking lot collision.",
+      "location": "Tempe, AZ"
+    },
+    "financials": {
+      "estimateAmount": 2063,
+      "paidAmount": 0,
+      "deductibleApplied": 500
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-08-26",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2024 Ford Escape. Initial cause reported as parking lot collision."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-014",
+    "policyId": "POL-010",
+    "customerId": "CUST-075",
+    "claimNumber": "CL-2025-1014",
+    "claimType": "Accident",
+    "status": "Closed",
+    "incidentDate": "2025-10-03",
+    "reportedDate": "2025-10-03",
+    "vehicleId": "VEH-F8YASZ1A",
+    "lossDetails": {
+      "cause": "Intersection impact",
+      "description": "Accident claim involving 2018 Toyota Corolla. Primary loss event: intersection impact.",
+      "location": "Tampa, FL"
+    },
+    "financials": {
+      "estimateAmount": 8822,
+      "paidAmount": 0,
+      "deductibleApplied": 500
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-10-03",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2018 Toyota Corolla. Initial cause reported as intersection impact."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2025-10-04",
+        "author": "Claims Adjuster",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Repair referral. Current estimate set at $8,822.00."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-015",
+    "policyId": "POL-016",
+    "customerId": "CUST-097",
+    "claimNumber": "CL-2025-1015",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2025-08-31",
+    "reportedDate": "2025-09-01",
+    "vehicleId": "VEH-6YMTVR0F",
+    "lossDetails": {
+      "cause": "Starter motor issue",
+      "description": "Breakdown claim involving 2025 Subaru Outback. Primary loss event: starter motor issue.",
+      "location": "Phoenix, AZ"
+    },
+    "financials": {
+      "estimateAmount": 2026,
+      "paidAmount": 0,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Tow",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-09-01",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2025 Subaru Outback. Initial cause reported as starter motor issue."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-016",
+    "policyId": "POL-030",
+    "customerId": "CUST-007",
+    "claimNumber": "CL-2024-1016",
+    "claimType": "Breakdown",
+    "status": "Open",
+    "incidentDate": "2024-10-30",
+    "reportedDate": "2024-10-30",
+    "vehicleId": "VEH-WR5TPYWT",
+    "lossDetails": {
+      "cause": "Engine overheating",
+      "description": "Breakdown claim involving 2022 Subaru Ascent. Primary loss event: engine overheating.",
+      "location": "Charlotte, NC"
+    },
+    "financials": {
+      "estimateAmount": 2435,
+      "paidAmount": 937.66,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Battery Jump",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-10-30",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2022 Subaru Ascent. Initial cause reported as engine overheating."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-017",
+    "policyId": "POL-025",
+    "customerId": "CUST-061",
+    "claimNumber": "CL-2025-1017",
+    "claimType": "Accident",
+    "status": "Closed",
+    "incidentDate": "2025-08-15",
+    "reportedDate": "2025-08-15",
+    "vehicleId": "VEH-VLYUB9V3",
+    "lossDetails": {
+      "cause": "Intersection impact",
+      "description": "Accident claim involving 2014 Mazda CX-9. Primary loss event: intersection impact.",
+      "location": "Portland, OR"
+    },
+    "financials": {
+      "estimateAmount": 6431,
+      "paidAmount": 0,
+      "deductibleApplied": 250
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-08-15",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2014 Mazda CX-9. Initial cause reported as intersection impact."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-018",
+    "policyId": "POL-005",
+    "customerId": "CUST-069",
+    "claimNumber": "CL-2025-1018",
+    "claimType": "Breakdown",
+    "status": "Open",
+    "incidentDate": "2025-09-19",
+    "reportedDate": "2025-09-22",
+    "vehicleId": "VEH-M7R1R6HG",
+    "lossDetails": {
+      "cause": "Starter motor issue",
+      "description": "Breakdown claim involving 2018 Chevrolet Silverado. Primary loss event: starter motor issue.",
+      "location": "Jacksonville, FL"
+    },
+    "financials": {
+      "estimateAmount": 325,
+      "paidAmount": 129.89,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Tire Change",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-09-22",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2018 Chevrolet Silverado. Initial cause reported as starter motor issue."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-019",
+    "policyId": "POL-013",
+    "customerId": "CUST-049",
+    "claimNumber": "CL-2025-1019",
+    "claimType": "Accident",
+    "status": "Paid",
+    "incidentDate": "2025-06-25",
+    "reportedDate": "2025-06-25",
+    "vehicleId": "VEH-C7GLAGZ0",
+    "lossDetails": {
+      "cause": "Sideswipe incident",
+      "description": "Accident claim involving 2015 Jeep Wrangler. Primary loss event: sideswipe incident.",
+      "location": "Dallas, TX"
+    },
+    "financials": {
+      "estimateAmount": 2517,
+      "paidAmount": 1201.8,
+      "deductibleApplied": 500
+    },
+    "services": {
+      "roadsideService": null,
+      "rentalCarProvided": true
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2025-06-25",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a accident involving the 2015 Jeep Wrangler. Initial cause reported as sideswipe incident."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2025-06-26",
+        "author": "Roadside Coordinator",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Repair referral. Current estimate set at $2,517.00."
+      },
+      {
+        "noteId": "NOTE-3",
+        "createdAt": "2025-06-28",
+        "author": "Claims Adjuster",
+        "text": "Resolution update: Customer scheduled rental vehicle while repairs were underway. Paid amount to date is $1,201.80."
+      }
+    ]
+  },
+  {
+    "claimId": "CLM-020",
+    "policyId": "POL-012",
+    "customerId": "CUST-086",
+    "claimNumber": "CL-2024-1020",
+    "claimType": "Breakdown",
+    "status": "In Review",
+    "incidentDate": "2024-11-04",
+    "reportedDate": "2024-11-07",
+    "vehicleId": "VEH-S7KDN0M7",
+    "lossDetails": {
+      "cause": "Transmission failure",
+      "description": "Breakdown claim involving 2019 Chevrolet Malibu. Primary loss event: transmission failure.",
+      "location": "Nashville, TN"
+    },
+    "financials": {
+      "estimateAmount": 2570,
+      "paidAmount": 1456.68,
+      "deductibleApplied": 0
+    },
+    "services": {
+      "roadsideService": "Battery Jump",
+      "rentalCarProvided": false
+    },
+    "notes": [
+      {
+        "noteId": "NOTE-1",
+        "createdAt": "2024-11-07",
+        "author": "FNOL Specialist",
+        "text": "Insured reported a breakdown involving the 2019 Chevrolet Malibu. Initial cause reported as transmission failure."
+      },
+      {
+        "noteId": "NOTE-2",
+        "createdAt": "2024-11-08",
+        "author": "Claims Adjuster",
+        "text": "Follow-up review confirmed the loss circumstances. Service path selected: Tire Change. Current estimate set at $2,570.00."
+      }
+    ]
+  }
+]

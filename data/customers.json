@@ -1,0 +1,2202 @@
+[
+  {
+    "customerId": "CUST-001",
+    "firstName": "Joseph",
+    "lastName": "Lopez",
+    "fullName": "Joseph Lopez",
+    "dateOfBirth": "1991-01-05",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "8228 Park Blvd",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "joseph.lopez1@example.com",
+      "phone": "(500) 908-2763",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2023-11-16"
+  },
+  {
+    "customerId": "CUST-002",
+    "firstName": "Chloe",
+    "lastName": "Garcia",
+    "fullName": "Chloe Garcia",
+    "dateOfBirth": "1987-08-18",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "1928 Park Ave",
+      "street2": "Apt 23D",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "chloe.garcia2@autohome.net",
+      "phone": "(617) 666-7804",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-12-30"
+  },
+  {
+    "customerId": "CUST-003",
+    "firstName": "Christian",
+    "lastName": "Scott",
+    "fullName": "Christian Scott",
+    "dateOfBirth": "1966-03-22",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "7025 Madison Blvd",
+      "street2": "Apt 13A",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "christianscott3@example.com",
+      "phone": "(800) 724-8485",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2021-11-24"
+  },
+  {
+    "customerId": "CUST-004",
+    "firstName": "Jack",
+    "lastName": "Campbell",
+    "fullName": "Jack Campbell",
+    "dateOfBirth": "1974-09-13",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "3401 Washington Blvd",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jack_campbell4@example.com",
+      "phone": "(931) 653-5295",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2022-08-02"
+  },
+  {
+    "customerId": "CUST-005",
+    "firstName": "Charlotte",
+    "lastName": "Moore",
+    "fullName": "Charlotte Moore",
+    "dateOfBirth": "1978-09-06",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "4211 Hill Blvd",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "charlottemoore5@example.com",
+      "phone": "(575) 439-6404",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-11-03"
+  },
+  {
+    "customerId": "CUST-006",
+    "firstName": "Leo",
+    "lastName": "Howard",
+    "fullName": "Leo Howard",
+    "dateOfBirth": "1975-06-06",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "2315 Jefferson Ct",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leo.howard6@autohome.net",
+      "phone": "(985) 344-4923",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2024-07-08"
+  },
+  {
+    "customerId": "CUST-007",
+    "firstName": "Samuel",
+    "lastName": "James",
+    "fullName": "Samuel James",
+    "dateOfBirth": "1975-09-06",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "1760 Hill Dr",
+      "street2": "",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "28202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "samuel.james7@example.com",
+      "phone": "(336) 570-3826",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2022-01-25"
+  },
+  {
+    "customerId": "CUST-008",
+    "firstName": "Carla",
+    "lastName": "Phillips",
+    "fullName": "Carla Phillips",
+    "dateOfBirth": "1962-04-14",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "3804 Oak Ave",
+      "street2": "",
+      "city": "Naperville",
+      "state": "IL",
+      "postalCode": "60540",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carla.phillips8@mail.com",
+      "phone": "(684) 270-9068",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2018-08-14"
+  },
+  {
+    "customerId": "CUST-009",
+    "firstName": "Leo",
+    "lastName": "Russell",
+    "fullName": "Leo Russell",
+    "dateOfBirth": "1986-12-12",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "4004 River Ln",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leo.russell9@example.com",
+      "phone": "(783) 403-3952",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2018-07-26"
+  },
+  {
+    "customerId": "CUST-010",
+    "firstName": "Jordan",
+    "lastName": "Cooper",
+    "fullName": "Jordan Cooper",
+    "dateOfBirth": "1965-06-04",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "1726 Cherry Ln",
+      "street2": "Apt 17A",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jordan.cooper10@sample.org",
+      "phone": "(960) 302-3452",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-04-19"
+  },
+  {
+    "customerId": "CUST-011",
+    "firstName": "Caleb",
+    "lastName": "Price",
+    "fullName": "Caleb Price",
+    "dateOfBirth": "1978-02-14",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "8482 Meadow St",
+      "street2": "Apt 1A",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "calebprice11@example.com",
+      "phone": "(394) 248-1167",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-07-09"
+  },
+  {
+    "customerId": "CUST-012",
+    "firstName": "Chloe",
+    "lastName": "Ramirez",
+    "fullName": "Chloe Ramirez",
+    "dateOfBirth": "1997-10-26",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "8949 Forest Ave",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "chloeramirez12@mail.com",
+      "phone": "(883) 847-6846",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-10-09"
+  },
+  {
+    "customerId": "CUST-013",
+    "firstName": "Layla",
+    "lastName": "Davis",
+    "fullName": "Layla Davis",
+    "dateOfBirth": "1979-10-27",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "4390 Oak Rd",
+      "street2": "",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "layla_davis13@sample.org",
+      "phone": "(664) 609-9654",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2018-01-07"
+  },
+  {
+    "customerId": "CUST-014",
+    "firstName": "Eleanor",
+    "lastName": "Martinez",
+    "fullName": "Eleanor Martinez",
+    "dateOfBirth": "1996-02-15",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "401 Hill Place",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "eleanor_martinez14@autohome.net",
+      "phone": "(955) 810-5575",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-06-05"
+  },
+  {
+    "customerId": "CUST-015",
+    "firstName": "Oliver",
+    "lastName": "Johnson",
+    "fullName": "Oliver Johnson",
+    "dateOfBirth": "1961-11-12",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "4368 Washington Dr",
+      "street2": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "oliverjohnson15@mail.com",
+      "phone": "(626) 317-2368",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-12-27"
+  },
+  {
+    "customerId": "CUST-016",
+    "firstName": "Daniel",
+    "lastName": "Edwards",
+    "fullName": "Daniel Edwards",
+    "dateOfBirth": "1958-02-06",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "1745 Lincoln Place",
+      "street2": "",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "daniel_edwards16@example.com",
+      "phone": "(667) 334-7426",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2018-11-22"
+  },
+  {
+    "customerId": "CUST-017",
+    "firstName": "Madison",
+    "lastName": "Davis",
+    "fullName": "Madison Davis",
+    "dateOfBirth": "1994-08-10",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "1462 Madison Ct",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "madison.davis17@sample.org",
+      "phone": "(596) 820-2863",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2022-06-12"
+  },
+  {
+    "customerId": "CUST-018",
+    "firstName": "Olivia",
+    "lastName": "Parker",
+    "fullName": "Olivia Parker",
+    "dateOfBirth": "1989-06-21",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "4123 River Way",
+      "street2": "",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "olivia_parker18@example.com",
+      "phone": "(526) 210-3324",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2019-04-15"
+  },
+  {
+    "customerId": "CUST-019",
+    "firstName": "Mia",
+    "lastName": "Bailey",
+    "fullName": "Mia Bailey",
+    "dateOfBirth": "1992-02-20",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "4289 Walnut Dr",
+      "street2": "",
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97204",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mia_bailey19@northstar.io",
+      "phone": "(283) 248-1541",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-12-05"
+  },
+  {
+    "customerId": "CUST-020",
+    "firstName": "Bianca",
+    "lastName": "Campbell",
+    "fullName": "Bianca Campbell",
+    "dateOfBirth": "1982-04-09",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "6710 Maple Ct",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "biancacampbell20@mail.com",
+      "phone": "(721) 621-9422",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2021-01-03"
+  },
+  {
+    "customerId": "CUST-021",
+    "firstName": "Carla",
+    "lastName": "Flores",
+    "fullName": "Carla Flores",
+    "dateOfBirth": "1969-08-21",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "1852 Walnut Place",
+      "street2": "",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carla_flores21@mail.com",
+      "phone": "(911) 848-8413",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-10-12"
+  },
+  {
+    "customerId": "CUST-022",
+    "firstName": "Carmen",
+    "lastName": "Gray",
+    "fullName": "Carmen Gray",
+    "dateOfBirth": "1975-11-02",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "1837 Maple Dr",
+      "street2": "",
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carmengray22@autohome.net",
+      "phone": "(856) 236-8482",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2022-05-24"
+  },
+  {
+    "customerId": "CUST-023",
+    "firstName": "Amara",
+    "lastName": "Scott",
+    "fullName": "Amara Scott",
+    "dateOfBirth": "2001-05-04",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "7884 Washington Ave",
+      "street2": "Apt 9D",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "postalCode": "80903",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "amara.scott23@northstar.io",
+      "phone": "(245) 624-3769",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-09-05"
+  },
+  {
+    "customerId": "CUST-024",
+    "firstName": "Christian",
+    "lastName": "Parker",
+    "fullName": "Christian Parker",
+    "dateOfBirth": "1998-05-30",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "3052 Meadow Ct",
+      "street2": "",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "32801",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "christianparker24@northstar.io",
+      "phone": "(798) 838-8833",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2024-12-14"
+  },
+  {
+    "customerId": "CUST-025",
+    "firstName": "Christopher",
+    "lastName": "Scott",
+    "fullName": "Christopher Scott",
+    "dateOfBirth": "1991-04-29",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "6646 Washington Place",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "christopher.scott25@sample.org",
+      "phone": "(678) 333-7289",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2018-07-14"
+  },
+  {
+    "customerId": "CUST-026",
+    "firstName": "Jack",
+    "lastName": "Sanchez",
+    "fullName": "Jack Sanchez",
+    "dateOfBirth": "1990-11-11",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "264 Park Place",
+      "street2": "",
+      "city": "Raleigh",
+      "state": "NC",
+      "postalCode": "27601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jack_sanchez26@mail.com",
+      "phone": "(777) 337-5294",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-06-03"
+  },
+  {
+    "customerId": "CUST-027",
+    "firstName": "Mateo",
+    "lastName": "Gomez",
+    "fullName": "Mateo Gomez",
+    "dateOfBirth": "1969-08-24",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "4328 Madison Terrace",
+      "street2": "",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78701",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mateo_gomez27@example.com",
+      "phone": "(759) 466-4189",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2021-05-24"
+  },
+  {
+    "customerId": "CUST-028",
+    "firstName": "Javier",
+    "lastName": "Stewart",
+    "fullName": "Javier Stewart",
+    "dateOfBirth": "1986-06-18",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "7791 Franklin Terrace",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "javier.stewart28@autohome.net",
+      "phone": "(371) 244-6078",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-03-07"
+  },
+  {
+    "customerId": "CUST-029",
+    "firstName": "Joseph",
+    "lastName": "Russell",
+    "fullName": "Joseph Russell",
+    "dateOfBirth": "1995-11-03",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "8894 Forest Terrace",
+      "street2": "",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "postalCode": "80903",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "joseph_russell29@autohome.net",
+      "phone": "(832) 268-6066",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2020-11-10"
+  },
+  {
+    "customerId": "CUST-030",
+    "firstName": "Liam",
+    "lastName": "Edwards",
+    "fullName": "Liam Edwards",
+    "dateOfBirth": "1984-08-06",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "9491 Oak Ct",
+      "street2": "",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "postalCode": "80903",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "liam_edwards30@mail.com",
+      "phone": "(540) 316-3196",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2019-05-02"
+  },
+  {
+    "customerId": "CUST-031",
+    "firstName": "Oliver",
+    "lastName": "Alvarez",
+    "fullName": "Oliver Alvarez",
+    "dateOfBirth": "1988-01-28",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "5706 Jefferson Ln",
+      "street2": "Apt 5A",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "oliveralvarez31@example.com",
+      "phone": "(967) 475-7045",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2023-04-12"
+  },
+  {
+    "customerId": "CUST-032",
+    "firstName": "Benjamin",
+    "lastName": "Phillips",
+    "fullName": "Benjamin Phillips",
+    "dateOfBirth": "1986-06-26",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "5590 Washington Ct",
+      "street2": "",
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "benjamin.phillips32@sample.org",
+      "phone": "(638) 278-4705",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-12-15"
+  },
+  {
+    "customerId": "CUST-033",
+    "firstName": "Mateo",
+    "lastName": "Campbell",
+    "fullName": "Mateo Campbell",
+    "dateOfBirth": "1980-05-04",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "5552 Cherry Ct",
+      "street2": "",
+      "city": "Phoenix",
+      "state": "AZ",
+      "postalCode": "85001",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mateocampbell33@sample.org",
+      "phone": "(362) 294-7442",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-01-22"
+  },
+  {
+    "customerId": "CUST-034",
+    "firstName": "Carla",
+    "lastName": "Rogers",
+    "fullName": "Carla Rogers",
+    "dateOfBirth": "1979-10-10",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "7281 Jefferson Rd",
+      "street2": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carla.rogers34@northstar.io",
+      "phone": "(863) 720-7421",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-06-21"
+  },
+  {
+    "customerId": "CUST-035",
+    "firstName": "Wyatt",
+    "lastName": "Brown",
+    "fullName": "Wyatt Brown",
+    "dateOfBirth": "1959-07-22",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "7442 Walnut Rd",
+      "street2": "",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "wyatt.brown35@sample.org",
+      "phone": "(863) 232-2233",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-01-08"
+  },
+  {
+    "customerId": "CUST-036",
+    "firstName": "Emma",
+    "lastName": "Young",
+    "fullName": "Emma Young",
+    "dateOfBirth": "1979-07-23",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "1989 River Dr",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "emma_young36@autohome.net",
+      "phone": "(972) 550-5015",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-09-22"
+  },
+  {
+    "customerId": "CUST-037",
+    "firstName": "Jasmine",
+    "lastName": "Collins",
+    "fullName": "Jasmine Collins",
+    "dateOfBirth": "2002-06-12",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "7509 Oak Blvd",
+      "street2": "",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "32801",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jasminecollins37@mail.com",
+      "phone": "(774) 921-3383",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2022-12-20"
+  },
+  {
+    "customerId": "CUST-038",
+    "firstName": "Olivia",
+    "lastName": "Thompson",
+    "fullName": "Olivia Thompson",
+    "dateOfBirth": "1960-04-28",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "783 Hill Ln",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "olivia.thompson38@example.com",
+      "phone": "(571) 436-3553",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-10-09"
+  },
+  {
+    "customerId": "CUST-039",
+    "firstName": "Caleb",
+    "lastName": "Sanchez",
+    "fullName": "Caleb Sanchez",
+    "dateOfBirth": "1970-04-05",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "4409 Pine Place",
+      "street2": "",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "32801",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "caleb.sanchez39@northstar.io",
+      "phone": "(660) 795-2286",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2025-04-13"
+  },
+  {
+    "customerId": "CUST-040",
+    "firstName": "Grace",
+    "lastName": "Smith",
+    "fullName": "Grace Smith",
+    "dateOfBirth": "2000-08-24",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "2878 Jefferson Dr",
+      "street2": "",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "postalCode": "80903",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "grace.smith40@autohome.net",
+      "phone": "(645) 357-2955",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2023-03-07"
+  },
+  {
+    "customerId": "CUST-041",
+    "firstName": "Ava",
+    "lastName": "Miller",
+    "fullName": "Ava Miller",
+    "dateOfBirth": "1980-04-27",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "4785 River Terrace",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "ava.miller41@sample.org",
+      "phone": "(746) 472-3012",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2021-04-27"
+  },
+  {
+    "customerId": "CUST-042",
+    "firstName": "Bianca",
+    "lastName": "Young",
+    "fullName": "Bianca Young",
+    "dateOfBirth": "1994-10-07",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "9784 Madison St",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "bianca.young42@example.com",
+      "phone": "(881) 351-2040",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2021-09-17"
+  },
+  {
+    "customerId": "CUST-043",
+    "firstName": "Grace",
+    "lastName": "Johnson",
+    "fullName": "Grace Johnson",
+    "dateOfBirth": "1982-08-12",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "1259 Walnut Ln",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "gracejohnson43@example.com",
+      "phone": "(751) 625-8524",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2023-04-14"
+  },
+  {
+    "customerId": "CUST-044",
+    "firstName": "Javier",
+    "lastName": "Young",
+    "fullName": "Javier Young",
+    "dateOfBirth": "1958-04-07",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "3338 Park Ln",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "javieryoung44@mail.com",
+      "phone": "(575) 729-3348",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2021-09-06"
+  },
+  {
+    "customerId": "CUST-045",
+    "firstName": "Leah",
+    "lastName": "Cooper",
+    "fullName": "Leah Cooper",
+    "dateOfBirth": "1974-02-03",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "2123 Maple St",
+      "street2": "Apt 5A",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leah_cooper45@northstar.io",
+      "phone": "(463) 540-1456",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2019-07-23"
+  },
+  {
+    "customerId": "CUST-046",
+    "firstName": "Nora",
+    "lastName": "Rivera",
+    "fullName": "Nora Rivera",
+    "dateOfBirth": "1966-10-16",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "9711 River Ct",
+      "street2": "",
+      "city": "Plano",
+      "state": "TX",
+      "postalCode": "75024",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "norarivera46@mail.com",
+      "phone": "(456) 324-3601",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-08-02"
+  },
+  {
+    "customerId": "CUST-047",
+    "firstName": "Mason",
+    "lastName": "Mitchell",
+    "fullName": "Mason Mitchell",
+    "dateOfBirth": "1996-05-25",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "3709 Walnut Blvd",
+      "street2": "",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mason.mitchell47@mail.com",
+      "phone": "(416) 235-4674",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2019-09-01"
+  },
+  {
+    "customerId": "CUST-048",
+    "firstName": "Sophia",
+    "lastName": "Brooks",
+    "fullName": "Sophia Brooks",
+    "dateOfBirth": "1971-06-24",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "3814 Washington Place",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "sophiabrooks48@sample.org",
+      "phone": "(435) 890-2961",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-10-25"
+  },
+  {
+    "customerId": "CUST-049",
+    "firstName": "Julian",
+    "lastName": "Edwards",
+    "fullName": "Julian Edwards",
+    "dateOfBirth": "1960-09-02",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "3168 Hill Terrace",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "julian.edwards49@northstar.io",
+      "phone": "(507) 396-4620",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2022-03-25"
+  },
+  {
+    "customerId": "CUST-050",
+    "firstName": "Ava",
+    "lastName": "James",
+    "fullName": "Ava James",
+    "dateOfBirth": "1983-07-18",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "4269 Pine Rd",
+      "street2": "",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "avajames50@sample.org",
+      "phone": "(544) 710-3128",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-01-04"
+  },
+  {
+    "customerId": "CUST-051",
+    "firstName": "Penelope",
+    "lastName": "Smith",
+    "fullName": "Penelope Smith",
+    "dateOfBirth": "1973-08-06",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "9202 Cedar Dr",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "penelope.smith51@autohome.net",
+      "phone": "(790) 241-8412",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-08-29"
+  },
+  {
+    "customerId": "CUST-052",
+    "firstName": "Layla",
+    "lastName": "Kelly",
+    "fullName": "Layla Kelly",
+    "dateOfBirth": "1986-11-13",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "1000 Meadow Ln",
+      "street2": "Apt 5B",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "layla.kelly52@sample.org",
+      "phone": "(704) 419-1544",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2023-07-14"
+  },
+  {
+    "customerId": "CUST-053",
+    "firstName": "Chloe",
+    "lastName": "Collins",
+    "fullName": "Chloe Collins",
+    "dateOfBirth": "1962-09-15",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "8215 Park Blvd",
+      "street2": "Apt 21A",
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "chloecollins53@autohome.net",
+      "phone": "(853) 666-6198",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-09-14"
+  },
+  {
+    "customerId": "CUST-054",
+    "firstName": "Mia",
+    "lastName": "Morris",
+    "fullName": "Mia Morris",
+    "dateOfBirth": "1960-10-14",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "3365 Maple St",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mia_morris54@autohome.net",
+      "phone": "(204) 742-4142",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2020-07-17"
+  },
+  {
+    "customerId": "CUST-055",
+    "firstName": "Gabriel",
+    "lastName": "Baker",
+    "fullName": "Gabriel Baker",
+    "dateOfBirth": "1960-08-14",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "4233 Oak Blvd",
+      "street2": "",
+      "city": "Plano",
+      "state": "TX",
+      "postalCode": "75024",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "gabrielbaker55@example.com",
+      "phone": "(271) 411-8134",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2022-04-24"
+  },
+  {
+    "customerId": "CUST-056",
+    "firstName": "Charlotte",
+    "lastName": "Jackson",
+    "fullName": "Charlotte Jackson",
+    "dateOfBirth": "1972-10-02",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "722 Willow Terrace",
+      "street2": "",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "28202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "charlotte.jackson56@sample.org",
+      "phone": "(752) 456-5578",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2024-08-04"
+  },
+  {
+    "customerId": "CUST-057",
+    "firstName": "Hannah",
+    "lastName": "Flores",
+    "fullName": "Hannah Flores",
+    "dateOfBirth": "1987-03-30",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "1024 Jefferson Terrace",
+      "street2": "",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "hannah.flores57@autohome.net",
+      "phone": "(776) 332-9050",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2022-10-09"
+  },
+  {
+    "customerId": "CUST-058",
+    "firstName": "David",
+    "lastName": "Scott",
+    "fullName": "David Scott",
+    "dateOfBirth": "1960-11-23",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "6338 Maple Place",
+      "street2": "Apt 24D",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "davidscott58@northstar.io",
+      "phone": "(914) 700-3189",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2022-07-12"
+  },
+  {
+    "customerId": "CUST-059",
+    "firstName": "Gabriel",
+    "lastName": "Diaz",
+    "fullName": "Gabriel Diaz",
+    "dateOfBirth": "1988-03-30",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "7763 Oak Terrace",
+      "street2": "",
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97204",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "gabriel_diaz59@sample.org",
+      "phone": "(815) 379-5089",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-08-18"
+  },
+  {
+    "customerId": "CUST-060",
+    "firstName": "Charlotte",
+    "lastName": "Wright",
+    "fullName": "Charlotte Wright",
+    "dateOfBirth": "1984-05-01",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "3949 River Place",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "charlottewright60@autohome.net",
+      "phone": "(259) 860-6684",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2018-03-11"
+  },
+  {
+    "customerId": "CUST-061",
+    "firstName": "Julian",
+    "lastName": "Wilson",
+    "fullName": "Julian Wilson",
+    "dateOfBirth": "1966-12-31",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "7103 Madison Ct",
+      "street2": "Apt 3A",
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97204",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "julianwilson61@example.com",
+      "phone": "(678) 649-7053",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2018-02-07"
+  },
+  {
+    "customerId": "CUST-062",
+    "firstName": "Ava",
+    "lastName": "Lopez",
+    "fullName": "Ava Lopez",
+    "dateOfBirth": "1998-09-24",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "5187 Franklin Blvd",
+      "street2": "",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "32801",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "ava.lopez62@mail.com",
+      "phone": "(723) 250-7395",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-09-28"
+  },
+  {
+    "customerId": "CUST-063",
+    "firstName": "Carmen",
+    "lastName": "Murphy",
+    "fullName": "Carmen Murphy",
+    "dateOfBirth": "1978-12-23",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "9792 Meadow Ave",
+      "street2": "Apt 23A",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carmen_murphy63@mail.com",
+      "phone": "(892) 738-2829",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2021-07-04"
+  },
+  {
+    "customerId": "CUST-064",
+    "firstName": "Layla",
+    "lastName": "Cooper",
+    "fullName": "Layla Cooper",
+    "dateOfBirth": "1987-07-24",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "3522 Maple Ct",
+      "street2": "Apt 3A",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "laylacooper64@autohome.net",
+      "phone": "(635) 304-3591",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2021-06-28"
+  },
+  {
+    "customerId": "CUST-065",
+    "firstName": "Nora",
+    "lastName": "Lee",
+    "fullName": "Nora Lee",
+    "dateOfBirth": "1982-06-20",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "3004 Willow Terrace",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "nora.lee65@autohome.net",
+      "phone": "(491) 226-4209",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-10-10"
+  },
+  {
+    "customerId": "CUST-066",
+    "firstName": "Harper",
+    "lastName": "Phillips",
+    "fullName": "Harper Phillips",
+    "dateOfBirth": "1961-09-27",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "6727 Forest Ln",
+      "street2": "",
+      "city": "Cleveland",
+      "state": "OH",
+      "postalCode": "44114",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "harper_phillips66@autohome.net",
+      "phone": "(528) 668-8816",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-02-08"
+  },
+  {
+    "customerId": "CUST-067",
+    "firstName": "Sofia",
+    "lastName": "Mitchell",
+    "fullName": "Sofia Mitchell",
+    "dateOfBirth": "1997-08-26",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "9700 Lake St",
+      "street2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98101",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "sofia_mitchell67@northstar.io",
+      "phone": "(552) 743-8154",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-04-28"
+  },
+  {
+    "customerId": "CUST-068",
+    "firstName": "Joseph",
+    "lastName": "White",
+    "fullName": "Joseph White",
+    "dateOfBirth": "1964-03-07",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "1973 Maple Ave",
+      "street2": "",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "28202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "joseph.white68@mail.com",
+      "phone": "(564) 354-6060",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-12-02"
+  },
+  {
+    "customerId": "CUST-069",
+    "firstName": "Lucia",
+    "lastName": "Lewis",
+    "fullName": "Lucia Lewis",
+    "dateOfBirth": "1987-08-01",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "6827 Cedar Blvd",
+      "street2": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "lucia.lewis69@mail.com",
+      "phone": "(860) 254-5976",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-06-05"
+  },
+  {
+    "customerId": "CUST-070",
+    "firstName": "Joseph",
+    "lastName": "Ortiz",
+    "fullName": "Joseph Ortiz",
+    "dateOfBirth": "1972-04-19",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "1266 Madison Rd",
+      "street2": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "josephortiz70@mail.com",
+      "phone": "(202) 330-3513",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-08-13"
+  },
+  {
+    "customerId": "CUST-071",
+    "firstName": "Leah",
+    "lastName": "Brooks",
+    "fullName": "Leah Brooks",
+    "dateOfBirth": "1977-02-20",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "4600 Park Ave",
+      "street2": "Apt 19C",
+      "city": "Phoenix",
+      "state": "AZ",
+      "postalCode": "85001",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leah_brooks71@example.com",
+      "phone": "(772) 774-5753",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2023-01-31"
+  },
+  {
+    "customerId": "CUST-072",
+    "firstName": "Ethan",
+    "lastName": "Brown",
+    "fullName": "Ethan Brown",
+    "dateOfBirth": "1986-11-06",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "1285 Cherry Ave",
+      "street2": "",
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "ethan.brown72@sample.org",
+      "phone": "(496) 461-1466",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2025-01-29"
+  },
+  {
+    "customerId": "CUST-073",
+    "firstName": "Nora",
+    "lastName": "Garcia",
+    "fullName": "Nora Garcia",
+    "dateOfBirth": "1971-02-18",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "930 Hill Terrace",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "noragarcia73@example.com",
+      "phone": "(374) 523-4668",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-03-24"
+  },
+  {
+    "customerId": "CUST-074",
+    "firstName": "Benjamin",
+    "lastName": "Price",
+    "fullName": "Benjamin Price",
+    "dateOfBirth": "1976-06-23",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "4298 Cherry Rd",
+      "street2": "",
+      "city": "Plano",
+      "state": "TX",
+      "postalCode": "75024",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "benjaminprice74@northstar.io",
+      "phone": "(891) 767-5256",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-12-26"
+  },
+  {
+    "customerId": "CUST-075",
+    "firstName": "Jasmine",
+    "lastName": "Morgan",
+    "fullName": "Jasmine Morgan",
+    "dateOfBirth": "1960-02-03",
+    "occupation": "Software Engineer",
+    "address": {
+      "street1": "145 Jefferson Ave",
+      "street2": "",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jasmine.morgan75@autohome.net",
+      "phone": "(528) 240-9543",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2021-06-27"
+  },
+  {
+    "customerId": "CUST-076",
+    "firstName": "Mia",
+    "lastName": "Lewis",
+    "fullName": "Mia Lewis",
+    "dateOfBirth": "1980-09-10",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "1152 Spruce Way",
+      "street2": "Apt 3A",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mia.lewis76@autohome.net",
+      "phone": "(944) 757-4191",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2025-04-13"
+  },
+  {
+    "customerId": "CUST-077",
+    "firstName": "Olivia",
+    "lastName": "Nguyen",
+    "fullName": "Olivia Nguyen",
+    "dateOfBirth": "1977-03-02",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "8350 Lincoln Terrace",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "olivia_nguyen77@sample.org",
+      "phone": "(660) 227-4718",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2022-11-25"
+  },
+  {
+    "customerId": "CUST-078",
+    "firstName": "Eva",
+    "lastName": "Collins",
+    "fullName": "Eva Collins",
+    "dateOfBirth": "1968-11-27",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "4072 Park Ct",
+      "street2": "",
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97204",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "evacollins78@sample.org",
+      "phone": "(831) 338-2786",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2019-12-29"
+  },
+  {
+    "customerId": "CUST-079",
+    "firstName": "Wyatt",
+    "lastName": "Williams",
+    "fullName": "Wyatt Williams",
+    "dateOfBirth": "1967-04-26",
+    "occupation": "Teacher",
+    "address": {
+      "street1": "7232 Washington Ave",
+      "street2": "Apt 18A",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "wyatt.williams79@mail.com",
+      "phone": "(506) 276-2483",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2021-10-11"
+  },
+  {
+    "customerId": "CUST-080",
+    "firstName": "Mateo",
+    "lastName": "Williams",
+    "fullName": "Mateo Williams",
+    "dateOfBirth": "1967-06-15",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "3705 Walnut Dr",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "mateowilliams80@example.com",
+      "phone": "(710) 542-7634",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-03-22"
+  },
+  {
+    "customerId": "CUST-081",
+    "firstName": "Natalie",
+    "lastName": "James",
+    "fullName": "Natalie James",
+    "dateOfBirth": "1961-10-16",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "7259 Washington Blvd",
+      "street2": "",
+      "city": "Raleigh",
+      "state": "NC",
+      "postalCode": "27601",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "natalie.james81@northstar.io",
+      "phone": "(476) 550-4037",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2025-02-25"
+  },
+  {
+    "customerId": "CUST-082",
+    "firstName": "Henry",
+    "lastName": "Cook",
+    "fullName": "Henry Cook",
+    "dateOfBirth": "1971-11-15",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "5708 Walnut Blvd",
+      "street2": "Apt 23B",
+      "city": "Orlando",
+      "state": "FL",
+      "postalCode": "32801",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "henrycook82@sample.org",
+      "phone": "(821) 591-9625",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2020-08-12"
+  },
+  {
+    "customerId": "CUST-083",
+    "firstName": "Isaac",
+    "lastName": "Wright",
+    "fullName": "Isaac Wright",
+    "dateOfBirth": "1981-04-30",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "9189 River Ave",
+      "street2": "",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78701",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "isaacwright83@example.com",
+      "phone": "(441) 989-6218",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2020-03-06"
+  },
+  {
+    "customerId": "CUST-084",
+    "firstName": "Andre",
+    "lastName": "Thompson",
+    "fullName": "Andre Thompson",
+    "dateOfBirth": "1967-07-21",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "6939 Meadow Blvd",
+      "street2": "",
+      "city": "Tempe",
+      "state": "AZ",
+      "postalCode": "85281",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "andre_thompson84@northstar.io",
+      "phone": "(255) 753-1689",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2023-04-27"
+  },
+  {
+    "customerId": "CUST-085",
+    "firstName": "Emma",
+    "lastName": "Rivera",
+    "fullName": "Emma Rivera",
+    "dateOfBirth": "1975-09-30",
+    "occupation": "Operations Analyst",
+    "address": {
+      "street1": "8564 Cherry Place",
+      "street2": "Apt 15D",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "emma.rivera85@autohome.net",
+      "phone": "(619) 723-9741",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2020-05-07"
+  },
+  {
+    "customerId": "CUST-086",
+    "firstName": "Owen",
+    "lastName": "Diaz",
+    "fullName": "Owen Diaz",
+    "dateOfBirth": "2002-07-03",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "4459 Cherry Dr",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "owendiaz86@mail.com",
+      "phone": "(820) 420-6183",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2022-05-05"
+  },
+  {
+    "customerId": "CUST-087",
+    "firstName": "Lucas",
+    "lastName": "Baker",
+    "fullName": "Lucas Baker",
+    "dateOfBirth": "1985-09-08",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "4345 Cedar Terrace",
+      "street2": "Apt 4C",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "lucas_baker87@autohome.net",
+      "phone": "(483) 274-8916",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2020-02-19"
+  },
+  {
+    "customerId": "CUST-088",
+    "firstName": "Ava",
+    "lastName": "Ward",
+    "fullName": "Ava Ward",
+    "dateOfBirth": "1974-07-17",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "3252 Hill St",
+      "street2": "",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "28202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "ava.ward88@sample.org",
+      "phone": "(280) 274-1989",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2024-10-07"
+  },
+  {
+    "customerId": "CUST-089",
+    "firstName": "Mia",
+    "lastName": "King",
+    "fullName": "Mia King",
+    "dateOfBirth": "1965-09-27",
+    "occupation": "Sales Manager",
+    "address": {
+      "street1": "4664 Jefferson Ln",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "miaking89@autohome.net",
+      "phone": "(570) 732-4653",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2019-04-26"
+  },
+  {
+    "customerId": "CUST-090",
+    "firstName": "Penelope",
+    "lastName": "Young",
+    "fullName": "Penelope Young",
+    "dateOfBirth": "1986-02-19",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "5647 Willow Terrace",
+      "street2": "",
+      "city": "Cleveland",
+      "state": "OH",
+      "postalCode": "44114",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "penelope.young90@example.com",
+      "phone": "(512) 419-6980",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2023-12-26"
+  },
+  {
+    "customerId": "CUST-091",
+    "firstName": "Nora",
+    "lastName": "Wood",
+    "fullName": "Nora Wood",
+    "dateOfBirth": "1963-09-24",
+    "occupation": "Retail Supervisor",
+    "address": {
+      "street1": "7211 Madison Place",
+      "street2": "",
+      "city": "Plano",
+      "state": "TX",
+      "postalCode": "75024",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "nora_wood91@example.com",
+      "phone": "(387) 759-8173",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-08-19"
+  },
+  {
+    "customerId": "CUST-092",
+    "firstName": "Ethan",
+    "lastName": "Jackson",
+    "fullName": "Ethan Jackson",
+    "dateOfBirth": "1961-11-22",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "1062 Walnut Way",
+      "street2": "",
+      "city": "Dallas",
+      "state": "TX",
+      "postalCode": "75201",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "ethanjackson92@northstar.io",
+      "phone": "(519) 794-9181",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2020-04-25"
+  },
+  {
+    "customerId": "CUST-093",
+    "firstName": "Emma",
+    "lastName": "Robinson",
+    "fullName": "Emma Robinson",
+    "dateOfBirth": "2000-02-29",
+    "occupation": "Nurse",
+    "address": {
+      "street1": "1070 Park Ln",
+      "street2": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "emma.robinson93@northstar.io",
+      "phone": "(654) 335-7363",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2021-01-16"
+  },
+  {
+    "customerId": "CUST-094",
+    "firstName": "Leo",
+    "lastName": "Lee",
+    "fullName": "Leo Lee",
+    "dateOfBirth": "1962-03-09",
+    "occupation": "Electrician",
+    "address": {
+      "street1": "3867 Walnut Way",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leo_lee94@autohome.net",
+      "phone": "(735) 238-3190",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2024-04-21"
+  },
+  {
+    "customerId": "CUST-095",
+    "firstName": "Julian",
+    "lastName": "Harris",
+    "fullName": "Julian Harris",
+    "dateOfBirth": "1978-07-12",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "3730 Pine Dr",
+      "street2": "Apt 22D",
+      "city": "Tampa",
+      "state": "FL",
+      "postalCode": "33602",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "julianharris95@sample.org",
+      "phone": "(234) 823-3745",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-05-29"
+  },
+  {
+    "customerId": "CUST-096",
+    "firstName": "Carla",
+    "lastName": "White",
+    "fullName": "Carla White",
+    "dateOfBirth": "1989-04-13",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "3412 Meadow Dr",
+      "street2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "postalCode": "37203",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carla.white96@mail.com",
+      "phone": "(580) 804-3373",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2024-07-17"
+  },
+  {
+    "customerId": "CUST-097",
+    "firstName": "Carla",
+    "lastName": "Diaz",
+    "fullName": "Carla Diaz",
+    "dateOfBirth": "1963-10-24",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "9241 Willow Way",
+      "street2": "",
+      "city": "Phoenix",
+      "state": "AZ",
+      "postalCode": "85001",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "carla_diaz97@autohome.net",
+      "phone": "(549) 871-2311",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2024-02-09"
+  },
+  {
+    "customerId": "CUST-098",
+    "firstName": "Leah",
+    "lastName": "King",
+    "fullName": "Leah King",
+    "dateOfBirth": "1964-01-08",
+    "occupation": "Project Manager",
+    "address": {
+      "street1": "153 Washington Terrace",
+      "street2": "",
+      "city": "Charlotte",
+      "state": "NC",
+      "postalCode": "28202",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "leahking98@northstar.io",
+      "phone": "(476) 894-5189",
+      "preferredContactMethod": "Phone"
+    },
+    "customerSince": "2023-12-26"
+  },
+  {
+    "customerId": "CUST-099",
+    "firstName": "Julian",
+    "lastName": "Miller",
+    "fullName": "Julian Miller",
+    "dateOfBirth": "1996-11-21",
+    "occupation": "Accountant",
+    "address": {
+      "street1": "3264 Maple Way",
+      "street2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "postalCode": "43215",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "julianmiller99@northstar.io",
+      "phone": "(211) 662-4869",
+      "preferredContactMethod": "Text"
+    },
+    "customerSince": "2019-02-28"
+  },
+  {
+    "customerId": "CUST-100",
+    "firstName": "Jordan",
+    "lastName": "Miller",
+    "fullName": "Jordan Miller",
+    "dateOfBirth": "1994-03-10",
+    "occupation": "Mechanic",
+    "address": {
+      "street1": "6309 Jefferson Rd",
+      "street2": "",
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77002",
+      "country": "USA"
+    },
+    "contact": {
+      "email": "jordan_miller100@autohome.net",
+      "phone": "(644) 937-3146",
+      "preferredContactMethod": "Email"
+    },
+    "customerSince": "2018-02-17"
+  }
+]

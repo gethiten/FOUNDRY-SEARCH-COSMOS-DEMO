@@ -1,0 +1,74 @@
+# Deploy the two hosted Foundry agents (kb + policy) with azd.
+# Each agent is its own azd project under hosted-agents/<name>. We log azd in
+# with the same OIDC federated credential, recreate the azd environment from
+# repository variables (the local .azure/ folder is gitignored), then deploy.
+#
+# NOTE: `azd deploy` ships new code to an already-provisioned agent. If the
+# target Foundry project/agent does not exist yet, run `azd provision` once
+# locally (or set RUN_PROVISION=true below) before relying on this workflow.
+name: Deploy Hosted Agents
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "hosted-agents/**"
+      - ".github/workflows/deploy-hosted-agents.yml"
+  workflow_dispatch:
+    inputs:
+      provision:
+        description: "Run `azd provision` before deploy (creates/updates the Foundry project, agent, and connections)"
+        type: boolean
+        default: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: azd deploy
+    runs-on: ubuntu-latest
+    environment: production
+    strategy:
+      fail-fast: false
+      matrix:
+        agent: [kb, policy]
+    defaults:
+      run:
+        working-directory: hosted-agents/${{ matrix.agent }}
+    env:
+      AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      AZURE_LOCATION: ${{ vars.AZURE_AGENTS_LOCATION }}
+      AZURE_ENV_NAME: ${{ vars.AZURE_AGENTS_ENV_NAME }}-${{ matrix.agent }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install azd
+        uses: Azure/setup-azd@v2
+
+      - name: azd login (OIDC)
+        run: |
+          azd auth login \
+            --client-id "$AZURE_CLIENT_ID" \
+            --federated-credential-provider "github" \
+            --tenant-id "$AZURE_TENANT_ID"
+
+      - name: Install agents extension
+        run: azd extension install azure.ai.agents
+
+      - name: Configure azd environment
+        run: |
+          azd env new "$AZURE_ENV_NAME" \
+            --subscription "$AZURE_SUBSCRIPTION_ID" \
+            --location "$AZURE_LOCATION" \
+            --no-prompt
+
+      - name: Provision agent infrastructure
+        if: ${{ inputs.provision }}
+        run: azd provision --no-prompt
+
+      - name: Deploy agent
+        run: azd deploy --no-prompt
