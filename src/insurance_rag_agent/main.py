@@ -27,6 +27,7 @@ from pydantic import BaseModel
 from insurance_rag_agent.agent_tools import AGENT_TOOLS, get_kb_sources, reset_kb_sources
 from insurance_rag_agent.config import Settings, get_settings
 from insurance_rag_agent.models import Citation, QueryRequest, QueryResponse
+from insurance_rag_agent.ontology import route
 from insurance_rag_agent.providers.cosmos_provider import get_cosmos_provider
 
 load_dotenv(override=False)
@@ -116,6 +117,8 @@ class AgentAsk(BaseModel):
 class AgentAnswer(BaseModel):
     answer: str
     agent: str | None = None
+    routed_to: list[str] | None = None
+    matched_concepts: list[str] | None = None
 
 
 def _build_agent(settings: Settings) -> Agent:
@@ -300,9 +303,47 @@ def api_ask_policy(req: AgentAsk) -> AgentAnswer:
 def api_chat(req: AgentAsk) -> AgentAnswer:
     """Entry point for the chat UI.
 
-    Invokes the delegating orchestrator agent, which decides whether to call the
-    knowledge-base agent, the policy agent, or both (via the /api/agents/*
-    endpoints above) and returns a combined answer.
+    Routes deterministically with the insurance domain ontology (ontology.route)
+    to the specialist agent(s) that own the concepts in the question, invokes
+    them, and merges the result. This replaces the extra LLM orchestrator turn:
+    routing is explainable, governable, and fast (no nested model hop).
+    """
+    s: Settings = getattr(app.state, "settings", None) or get_settings()
+    decision = route(req.question)
+    agent_name_by_key = {
+        "policy": s.hosted_policy_agent_name,
+        "kb": s.hosted_kb_agent_name,
+    }
+    label_by_key = {"policy": "Policy data", "kb": "Knowledge base"}
+    answers: list[tuple[str, str]] = []
+    try:
+        for key in decision.agents:
+            answers.append((key, _invoke_agent(s, agent_name_by_key[key], req.question)))
+    except Exception as exc:
+        logger.exception("ontology-routed agent invocation failed")
+        raise HTTPException(status_code=502, detail=f"agent failed: {exc}") from exc
+
+    if len(answers) == 1:
+        combined = answers[0][1]
+    else:
+        combined = "\n\n".join(f"**{label_by_key[k]}:** {a}" for k, a in answers)
+
+    return AgentAnswer(
+        answer=combined,
+        agent="ontology-router",
+        routed_to=[agent_name_by_key[k] for k in decision.agents],
+        matched_concepts=decision.concepts,
+    )
+
+
+@app.post("/api/orchestrator", response_model=AgentAnswer)
+def api_orchestrator(req: AgentAsk) -> AgentAnswer:
+    """Optional: the LLM delegating orchestrator agent (kept for comparison).
+
+    Invokes the Foundry orchestrator agent, which decides whether to call the
+    knowledge-base agent, the policy agent, or both via the /api/agents/*
+    endpoints. Slower and subject to nested-call latency; the chat UI uses the
+    deterministic ontology router at /api/chat instead.
     """
     s: Settings = getattr(app.state, "settings", None) or get_settings()
     try:
