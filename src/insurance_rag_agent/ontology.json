@@ -1,0 +1,45 @@
+{
+  "$comment": "Insurance domain ontology metadata. Edit concepts here WITHOUT touching code. Loaded at startup by ontology.py (override path with the ONTOLOGY_PATH env var). Each concept maps to the specialist agent that owns it: 'policy' (Azure Cosmos DB) or 'kb' (Azure AI Search). A question matches a concept if any id_pattern (regex, case-insensitive) or any label (case-insensitive substring) is present.",
+  "version": "1.0.0",
+  "default_agent": "kb",
+  "concepts": [
+    {
+      "name": "Policy",
+      "agent": "policy",
+      "id_patterns": ["\\bPOL-\\d+\\b", "\\bAU-\\d+\\b"],
+      "labels": ["policy", "policies", "my coverage", "renewal", "premium", "deductible on", "vehicles on"]
+    },
+    {
+      "name": "Claim",
+      "agent": "policy",
+      "id_patterns": ["\\bCLM-\\d+\\b", "\\bCL-\\d{4}-\\d+\\b"],
+      "labels": ["claim status", "claims for", "claims on", "my claim", "claim details", "payout"]
+    },
+    {
+      "name": "Customer",
+      "agent": "policy",
+      "id_patterns": ["\\bCUST-\\d+\\b"],
+      "labels": ["customer", "policyholder", "insured", "account holder"]
+    },
+    {
+      "name": "CoverageSummary",
+      "agent": "policy",
+      "labels": ["coverage summary", "portfolio", "total premium", "across all policies", "how many policies"]
+    },
+    {
+      "name": "Terminology",
+      "agent": "kb",
+      "labels": ["what is a", "what is an", "what are", "what's a", "what does", "define", "definition", "explain", "how does", "meaning of", " mean"]
+    },
+    {
+      "name": "CoverageType",
+      "agent": "kb",
+      "labels": ["comprehensive coverage", "collision coverage", "liability coverage", "uninsured motorist", "what is covered", "types of coverage"]
+    },
+    {
+      "name": "ClaimsProcess",
+      "agent": "kb",
+      "labels": ["how to file", "how do i file", "claims process", "filing a claim", "file a claim", "steps to file", "how do i claim"]
+    }
+  ]
+}
