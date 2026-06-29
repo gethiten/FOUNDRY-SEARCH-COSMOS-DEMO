@@ -15,8 +15,15 @@ Routing is a pure function of the question text: match the question against each
 concept's id-patterns (regex) and labels (phrases), collect the owning agents,
 and return them together with the concepts that fired (for an auditable trail).
 
-The metadata path defaults to ``ontology.json`` next to this module and can be
-overridden with the ``ONTOLOGY_PATH`` environment variable.
+The metadata source is resolved in this order:
+
+1. ``ONTOLOGY_BLOB_URL`` -- a governed blob (read via managed identity) for
+   centrally controlled, config-driven governance.
+2. ``ONTOLOGY_PATH`` -- an external/local file path.
+3. The packaged ``ontology.json`` next to this module.
+
+If the governed source is unreachable or invalid, the packaged copy is used so
+the service never goes down.
 """
 
 from __future__ import annotations
@@ -38,9 +45,13 @@ KB = "kb"
 _PACKAGED_PATH = Path(__file__).parent / "ontology.json"
 
 # Path to the ontology metadata file. Point ONTOLOGY_PATH at an external/governed
-# location (e.g. a blob-synced file mounted into the container) for config-driven
-# governance; if unset or unreadable, the packaged copy above is used.
+# location for config-driven governance; if unset or unreadable, the packaged
+# copy above is used.
 ONTOLOGY_PATH = Path(os.environ.get("ONTOLOGY_PATH") or _PACKAGED_PATH)
+
+# Governed blob URL (e.g. https://<acct>.blob.core.windows.net/ontology/ontology.json).
+# When set, it takes precedence and is read with the app's managed identity.
+ONTOLOGY_BLOB_URL = os.environ.get("ONTOLOGY_BLOB_URL")
 
 
 @dataclass(frozen=True)
@@ -68,27 +79,49 @@ def _parse_ontology(data: dict) -> tuple[tuple[Concept, ...], str]:
     return concepts, default_agent
 
 
-def _load_ontology(path: Path) -> tuple[tuple[Concept, ...], str]:
-    """Load ontology metadata from ``path``, falling back to the packaged file.
+def _read_blob(url: str) -> str:
+    """Download ontology JSON text from a blob URL using the app's managed identity."""
+    from azure.identity import DefaultAzureCredential
+    from azure.storage.blob import BlobClient
 
-    A missing or malformed governed file must never take the service down, so
+    client = BlobClient.from_blob_url(url, credential=DefaultAzureCredential())
+    return client.download_blob(encoding="utf-8").readall()
+
+
+def _read_primary() -> tuple[str, str]:
+    """Return ``(json_text, source_label)`` from the governed source.
+
+    Prefers ``ONTOLOGY_BLOB_URL`` (a governed blob read via managed identity);
+    otherwise reads the ``ONTOLOGY_PATH`` file.
+    """
+    if ONTOLOGY_BLOB_URL:
+        return _read_blob(ONTOLOGY_BLOB_URL), ONTOLOGY_BLOB_URL
+    return ONTOLOGY_PATH.read_text(encoding="utf-8"), str(ONTOLOGY_PATH)
+
+
+def _load_ontology() -> tuple[tuple[Concept, ...], str]:
+    """Load ontology metadata from the governed source, falling back to the packaged file.
+
+    A missing or malformed governed source must never take the service down, so
     any failure logs a warning and uses the packaged ``ontology.json``.
     """
     try:
-        concepts, default_agent = _parse_ontology(json.loads(path.read_text(encoding="utf-8")))
+        text, source = _read_primary()
+        concepts, default_agent = _parse_ontology(json.loads(text))
         if not concepts:
             raise ValueError("ontology metadata contains no concepts")
-        logger.info("Loaded %d ontology concepts from %s", len(concepts), path)
+        logger.info("Loaded %d ontology concepts from %s", len(concepts), source)
         return concepts, default_agent
     except Exception:
-        if path != _PACKAGED_PATH:
-            logger.warning("Failed to load ontology from %s; using packaged copy", path, exc_info=True)
+        governed = bool(ONTOLOGY_BLOB_URL) or ONTOLOGY_PATH != _PACKAGED_PATH
+        if governed:
+            logger.warning("Failed to load governed ontology; using packaged copy", exc_info=True)
             return _parse_ontology(json.loads(_PACKAGED_PATH.read_text(encoding="utf-8")))
         raise
 
 
 # Loaded once at import. Concept order is preserved for the returned trail.
-ONTOLOGY, DEFAULT_AGENT = _load_ontology(ONTOLOGY_PATH)
+ONTOLOGY, DEFAULT_AGENT = _load_ontology()
 
 
 @dataclass(frozen=True)
