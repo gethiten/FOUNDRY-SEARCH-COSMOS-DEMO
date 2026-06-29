@@ -23,7 +23,10 @@ The metadata source is resolved in this order:
 3. The packaged ``ontology.json`` next to this module.
 
 If the governed source is unreachable or invalid, the packaged copy is used so
-the service never goes down.
+the service never goes down. When a governed source is configured, it is polled
+for changes (ETag for a blob, mtime for a file) at most once every
+``ONTOLOGY_RELOAD_SECONDS`` (default 30; set 0 to disable) so edits take effect
+without an app restart.
 """
 
 from __future__ import annotations
@@ -32,6 +35,8 @@ import json
 import logging
 import os
 import re
+import threading
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -52,6 +57,13 @@ ONTOLOGY_PATH = Path(os.environ.get("ONTOLOGY_PATH") or _PACKAGED_PATH)
 # Governed blob URL (e.g. https://<acct>.blob.core.windows.net/ontology/ontology.json).
 # When set, it takes precedence and is read with the app's managed identity.
 ONTOLOGY_BLOB_URL = os.environ.get("ONTOLOGY_BLOB_URL")
+
+# How often (seconds) to poll the governed source for changes so edits apply
+# without a restart. Set to 0 to load once at startup and never re-check.
+try:
+    ONTOLOGY_RELOAD_SECONDS = float(os.environ.get("ONTOLOGY_RELOAD_SECONDS", "30"))
+except ValueError:
+    ONTOLOGY_RELOAD_SECONDS = 30.0
 
 
 @dataclass(frozen=True)
@@ -79,13 +91,18 @@ def _parse_ontology(data: dict) -> tuple[tuple[Concept, ...], str]:
     return concepts, default_agent
 
 
-def _read_blob(url: str) -> str:
-    """Download ontology JSON text from a blob URL using the app's managed identity."""
-    from azure.identity import DefaultAzureCredential
-    from azure.storage.blob import BlobClient
+_blob_client = None  # cached BlobClient for the governed blob (reused across polls)
 
-    client = BlobClient.from_blob_url(url, credential=DefaultAzureCredential())
-    return client.download_blob(encoding="utf-8").readall()
+
+def _get_blob_client():
+    """Return a cached BlobClient for the governed blob, created on first use."""
+    global _blob_client
+    if _blob_client is None:
+        from azure.identity import DefaultAzureCredential
+        from azure.storage.blob import BlobClient
+
+        _blob_client = BlobClient.from_blob_url(ONTOLOGY_BLOB_URL, credential=DefaultAzureCredential())
+    return _blob_client
 
 
 def _read_primary() -> tuple[str, str]:
@@ -95,12 +112,37 @@ def _read_primary() -> tuple[str, str]:
     otherwise reads the ``ONTOLOGY_PATH`` file.
     """
     if ONTOLOGY_BLOB_URL:
-        return _read_blob(ONTOLOGY_BLOB_URL), ONTOLOGY_BLOB_URL
+        return _get_blob_client().download_blob(encoding="utf-8").readall(), ONTOLOGY_BLOB_URL
     return ONTOLOGY_PATH.read_text(encoding="utf-8"), str(ONTOLOGY_PATH)
 
 
-def _load_ontology() -> tuple[tuple[Concept, ...], str]:
-    """Load ontology metadata from the governed source, falling back to the packaged file.
+def _source_version() -> str | None:
+    """Return a cheap change token for the active source (blob ETag or file mtime)."""
+    if ONTOLOGY_BLOB_URL:
+        return _get_blob_client().get_blob_properties().etag
+    return str(ONTOLOGY_PATH.stat().st_mtime_ns)
+
+
+def _safe_source_version() -> str | None:
+    """Best-effort ``_source_version`` that never raises."""
+    try:
+        return _source_version()
+    except Exception:
+        return None
+
+
+@dataclass
+class _OntologyState:
+    """The loaded ontology plus the source version it was loaded from."""
+
+    concepts: tuple[Concept, ...]
+    default_agent: str
+    version: str | None
+    checked_at: float
+
+
+def _load_state(known_version: str | None = None) -> _OntologyState:
+    """Load ontology from the governed source, falling back to the packaged file.
 
     A missing or malformed governed source must never take the service down, so
     any failure logs a warning and uses the packaged ``ontology.json``.
@@ -110,18 +152,44 @@ def _load_ontology() -> tuple[tuple[Concept, ...], str]:
         concepts, default_agent = _parse_ontology(json.loads(text))
         if not concepts:
             raise ValueError("ontology metadata contains no concepts")
+        version = known_version if known_version is not None else _safe_source_version()
         logger.info("Loaded %d ontology concepts from %s", len(concepts), source)
-        return concepts, default_agent
+        return _OntologyState(concepts, default_agent, version, time.monotonic())
     except Exception:
         governed = bool(ONTOLOGY_BLOB_URL) or ONTOLOGY_PATH != _PACKAGED_PATH
         if governed:
             logger.warning("Failed to load governed ontology; using packaged copy", exc_info=True)
-            return _parse_ontology(json.loads(_PACKAGED_PATH.read_text(encoding="utf-8")))
+            concepts, default_agent = _parse_ontology(json.loads(_PACKAGED_PATH.read_text(encoding="utf-8")))
+            return _OntologyState(concepts, default_agent, None, time.monotonic())
         raise
 
 
-# Loaded once at import. Concept order is preserved for the returned trail.
-ONTOLOGY, DEFAULT_AGENT = _load_ontology()
+# Loaded once at import; refreshed in place when the governed source changes.
+_state = _load_state()
+_lock = threading.Lock()
+
+# Initial snapshot for introspection / back-compat (live values live in _state).
+ONTOLOGY = _state.concepts
+DEFAULT_AGENT = _state.default_agent
+
+
+def _maybe_reload() -> None:
+    """Reload the ontology if the governed source changed, throttled by TTL."""
+    global _state
+    if ONTOLOGY_RELOAD_SECONDS <= 0:
+        return
+    now = time.monotonic()
+    if now - _state.checked_at < ONTOLOGY_RELOAD_SECONDS:
+        return
+    with _lock:
+        # Another thread may have refreshed while we waited for the lock.
+        if now - _state.checked_at < ONTOLOGY_RELOAD_SECONDS:
+            return
+        _state.checked_at = now  # throttle further checks regardless of outcome
+        version = _safe_source_version()
+        if version is None or version == _state.version:
+            return  # unreadable or unchanged -> keep the current copy
+        _state = _load_state(known_version=version)
 
 
 @dataclass(frozen=True)
@@ -140,9 +208,11 @@ def route(question: str) -> RouteDecision:
     the concepts that fired, in ontology order. Falls back to ``DEFAULT_AGENT``
     when nothing matches.
     """
+    _maybe_reload()
+    state = _state
     text = (question or "").lower()
     fired: list[Concept] = []
-    for concept in ONTOLOGY:
+    for concept in state.concepts:
         if any(re.search(p, question, re.IGNORECASE) for p in concept.id_patterns):
             fired.append(concept)
             continue
@@ -150,7 +220,7 @@ def route(question: str) -> RouteDecision:
             fired.append(concept)
 
     if not fired:
-        return RouteDecision(agents=[DEFAULT_AGENT], concepts=[], matched=False)
+        return RouteDecision(agents=[state.default_agent], concepts=[], matched=False)
 
     # Preserve agent order as policy-then-kb for stable, readable merged output.
     agents: list[str] = []
