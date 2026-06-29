@@ -36,6 +36,12 @@ param searchIndexName string = 'insurance-kb'
 @description('Blob container that holds the knowledge-base source documents the Search indexer reads from.')
 param kbBlobContainerName string = 'kb-docs'
 
+@description('Blob container that holds the governed ontology metadata (ontology.json) the API hot-reloads for deterministic routing.')
+param ontologyBlobContainerName string = 'ontology'
+
+@description('How often (seconds) the API polls the governed ontology blob for changes. 0 disables hot-reload.')
+param ontologyReloadSeconds int = 30
+
 @description('Cosmos DB database name.')
 param cosmosDatabaseName string = 'insurance'
 
@@ -202,6 +208,16 @@ resource kbContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@
   }
 }
 
+// Governed ontology metadata container. The API reads ontology.json from here
+// (keyless, via managed identity) and hot-reloads it without a restart.
+resource ontologyContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
+  parent: blobService
+  name: ontologyBlobContainerName
+  properties: {
+    publicAccess: 'None'
+  }
+}
+
 // Search service managed identity -> read knowledge-base blobs (keyless data source)
 resource searchStorageReaderRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(storage.id, search.id, storageBlobDataReaderRoleId)
@@ -313,6 +329,14 @@ resource apiApp 'Microsoft.Web/sites@2023-12-01' = if (deployApp) {
           name: 'OTEL_SERVICE_NAME'
           value: 'insurance-rag-api'
         }
+        {
+          name: 'ONTOLOGY_BLOB_URL'
+          value: '${storage.properties.primaryEndpoints.blob}${ontologyBlobContainerName}/ontology.json'
+        }
+        {
+          name: 'ONTOLOGY_RELOAD_SECONDS'
+          value: string(ontologyReloadSeconds)
+        }
       ]
     }
   }
@@ -328,6 +352,17 @@ resource appSearchReaderRole 'Microsoft.Authorization/roleAssignments@2022-04-01
   scope: search
   properties: {
     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', searchIndexDataReaderRoleId)
+    principalId: apiApp!.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+// App -> read the governed ontology blob (hot-reloaded by the API, keyless)
+resource appStorageReaderRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (deployApp) {
+  name: guid(storage.id, apiApp!.id, storageBlobDataReaderRoleId)
+  scope: storage
+  properties: {
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', storageBlobDataReaderRoleId)
     principalId: apiApp!.identity.principalId
     principalType: 'ServicePrincipal'
   }
