@@ -121,7 +121,7 @@
   <header>
     <h1>Insurance Assistant</h1>
     <span class="badge">voice · KB + Policy agents</span>
-    <button id="speakToggle" class="toggle on" title="Toggle spoken replies">🔊 Speak replies: On</button>
+    <button id="speakToggle" class="toggle" title="Toggle spoken replies">🔈 Speak replies: Off</button>
     <button id="liveToggle" class="toggle live" title="Real-time voice conversation with the Foundry agent" style="display:none">🎙️ Live voice</button>
   </header>
 
@@ -156,7 +156,7 @@
     const micBtn = document.getElementById("mic");
     const speakToggle = document.getElementById("speakToggle");
     const SpeechSDK = window.SpeechSDK;
-    let speakReplies = true;
+    let speakReplies = false;
     let speechCfg = null; // cached { token, region, language, voice, expires }
 
     function addMessage(role, text) {
