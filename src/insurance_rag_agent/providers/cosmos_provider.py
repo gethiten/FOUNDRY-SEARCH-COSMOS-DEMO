@@ -34,10 +34,11 @@ class CosmosPolicyProvider:
     # -- internal query helper -------------------------------------------------
     @staticmethod
     def _query(container, sql: str, params: list[dict] | None = None) -> list[dict]:
+        # azure-cosmos>=4.9 removed the ``enable_cross_partition_query`` kwarg;
+        # cross-partition queries are enabled by default.
         items = container.query_items(
             query=sql,
             parameters=params or [],
-            enable_cross_partition_query=True,
         )
         return list(items)
 
