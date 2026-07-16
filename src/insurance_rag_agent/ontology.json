@@ -13,7 +13,7 @@
       "name": "Claim",
       "agent": "policy",
       "id_patterns": ["\\bCLM-\\d+\\b", "\\bCL-\\d{4}-\\d+\\b"],
-      "labels": ["claim status", "claims for", "claims on", "my claim", "claim details", "payout"]
+      "labels": ["claim status", "claims for", "claims on", "my claim", "claim details", "payout", "list of claims", "list claims", "list the claims", "all claims", "show claims", "show me claims", "claims list", "recent claims", "open claims", "how many claims", "any claims"]
     },
     {
       "name": "Customer",

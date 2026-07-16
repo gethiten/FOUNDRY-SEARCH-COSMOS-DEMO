@@ -18,6 +18,8 @@ azure-ai-projects==2.2.0
 openai>=2.8.0
 agent-framework-core==1.8.1
 agent-framework-foundry==1.8.1
+# Real-time speech-to-speech (Voice Live) relay for the live-voice UI mode
+azure-ai-voicelive==1.2.0
 
 # --- KB document parsing (for chunking the .docx knowledge base) ---
 python-docx==1.1.2

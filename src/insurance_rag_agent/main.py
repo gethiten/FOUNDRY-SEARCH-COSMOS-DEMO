@@ -11,6 +11,8 @@ The model decides which tool(s) to call per turn.
 
 from __future__ import annotations
 
+import asyncio
+import json
 import logging
 import os
 from pathlib import Path
@@ -20,7 +22,7 @@ from agent_framework_foundry import FoundryChatClient
 from azure.ai.projects import AIProjectClient
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
@@ -352,6 +354,134 @@ def api_orchestrator(req: AgentAsk) -> AgentAnswer:
         logger.exception("orchestrator invocation failed")
         raise HTTPException(status_code=502, detail=f"orchestrator failed: {exc}") from exc
     return AgentAnswer(answer=answer, agent=s.insurance_orchestrator_agent_name)
+
+
+# ---------------------------------------------------------------------------
+# Voice: keyless Speech token for the browser Speech SDK.
+#
+# The browser does speech-to-text and text-to-speech directly against the AI
+# Services account, but we never ship a key. This endpoint mints a short-lived
+# Entra token (via the app's managed identity) in the SDK's Entra format
+# "aad#<resourceId>#<aadToken>". The MI needs the "Cognitive Services Speech
+# User" role on the AI Services account.
+# ---------------------------------------------------------------------------
+_speech_credential: DefaultAzureCredential | None = None
+
+
+@app.get("/api/speech/token")
+def api_speech_token() -> dict:
+    """Return a short-lived, keyless Speech auth token + region for the browser SDK."""
+    global _speech_credential
+    s: Settings = getattr(app.state, "settings", None) or get_settings()
+    if not s.speech_region or not s.speech_resource_id:
+        raise HTTPException(status_code=404, detail="Speech is not configured.")
+    if _speech_credential is None:
+        _speech_credential = DefaultAzureCredential()
+    try:
+        aad = _speech_credential.get_token("https://cognitiveservices.azure.com/.default")
+    except Exception as exc:
+        logger.exception("failed to acquire Speech token")
+        raise HTTPException(status_code=502, detail=f"speech token failed: {exc}") from exc
+    return {
+        "token": f"aad#{s.speech_resource_id}#{aad.token}",
+        "region": s.speech_region,
+        "language": s.speech_recognition_language,
+        "voice": s.speech_synthesis_voice,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Foundry Voice Live (real-time speech-to-speech) — server-side relay.
+#
+# A separate live-voice mode from the browser-Speech mic above. The browser
+# opens a WebSocket to /api/voicelive/ws and speaks the raw Voice Live protocol
+# (session.update, input_audio_buffer.append, response.audio.delta, ...). The
+# backend opens an upstream Voice Live WebSocket in AGENT mode against the
+# insurance-orchestrator agent and adds a keyless Entra bearer token (managed
+# identity) — browsers can't set a WebSocket Authorization header, so the relay
+# is required. Frames are forwarded transparently in both directions. This is
+# additive and does NOT touch the typed /api/chat ontology-router flow.
+# ---------------------------------------------------------------------------
+_voicelive_credential = None  # azure.identity.aio.DefaultAzureCredential (lazy)
+
+
+@app.get("/api/voicelive/config")
+def api_voicelive_config() -> dict:
+    """Report whether the live-voice mode is configured (used by the UI to show it)."""
+    s: Settings = getattr(app.state, "settings", None) or get_settings()
+    enabled = bool(s.voicelive_endpoint and s.voicelive_project_name and s.voicelive_agent_name)
+    return {
+        "enabled": enabled,
+        "voice": s.voicelive_voice,
+        "agent": s.voicelive_agent_name if enabled else "",
+    }
+
+
+async def _voicelive_pump_upstream_to_client(connection, ws: WebSocket) -> None:
+    """Forward raw Voice Live server frames straight to the browser."""
+    while True:
+        raw = await connection.recv_bytes()  # raw JSON text frame (bytes)
+        if not raw:
+            break
+        await ws.send_text(raw.decode("utf-8"))
+
+
+async def _voicelive_pump_client_to_upstream(connection, ws: WebSocket) -> None:
+    """Forward browser client events (JSON) up to the Voice Live service."""
+    while True:
+        text = await ws.receive_text()
+        try:
+            event = json.loads(text)
+        except ValueError:
+            continue
+        await connection.send(event)
+
+
+@app.websocket("/api/voicelive/ws")
+async def api_voicelive_ws(ws: WebSocket) -> None:
+    """Relay a browser voice session to the Voice Live API in agent mode (keyless)."""
+    s: Settings = getattr(app.state, "settings", None) or get_settings()
+    await ws.accept()
+
+    if not (s.voicelive_endpoint and s.voicelive_project_name and s.voicelive_agent_name):
+        await ws.send_text(json.dumps({"type": "error", "error": {"message": "Voice Live is not configured."}}))
+        await ws.close()
+        return
+
+    # Lazy imports so the rest of the app doesn't hard-depend on the Voice Live SDK.
+    from azure.ai.voicelive.aio import connect as voicelive_connect
+    from azure.identity.aio import DefaultAzureCredential as AsyncDefaultAzureCredential
+
+    global _voicelive_credential
+    if _voicelive_credential is None:
+        _voicelive_credential = AsyncDefaultAzureCredential()
+
+    try:
+        async with voicelive_connect(
+            credential=_voicelive_credential,
+            endpoint=s.voicelive_endpoint,
+            api_version=s.voicelive_api_version,
+            agent_name=s.voicelive_agent_name,
+            project_name=s.voicelive_project_name,
+        ) as connection:
+            up = asyncio.create_task(_voicelive_pump_upstream_to_client(connection, ws))
+            down = asyncio.create_task(_voicelive_pump_client_to_upstream(connection, ws))
+            done, pending = await asyncio.wait({up, down}, return_when=asyncio.FIRST_COMPLETED)
+            for task in pending:
+                task.cancel()
+    except WebSocketDisconnect:
+        logger.info("voicelive: client disconnected")
+    except Exception as exc:  # noqa: BLE001 - surface upstream errors to the client
+        logger.exception("voicelive relay failed")
+        try:
+            await ws.send_text(json.dumps({"type": "error", "error": {"message": f"Voice Live relay failed: {exc}"}}))
+        except Exception:  # noqa: BLE001
+            pass
+    finally:
+        try:
+            await ws.close()
+        except Exception:  # noqa: BLE001
+            pass
 
 
 # ---------------------------------------------------------------------------

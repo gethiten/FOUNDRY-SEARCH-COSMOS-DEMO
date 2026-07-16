@@ -97,12 +97,32 @@
       border-radius: 10px; padding: 0 20px; font-weight: 600; cursor: pointer;
     }
     button.send:disabled { opacity: .5; cursor: not-allowed; }
+    button.mic {
+      background: var(--panel-2); color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 0 16px; font-size: 18px; cursor: pointer;
+    }
+    button.mic:hover { border-color: var(--accent); }
+    button.mic.recording { background: #b91c1c; border-color: #ef4444; animation: pulse 1s infinite; }
+    button.mic:disabled { opacity: .5; cursor: not-allowed; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
+    header .toggle {
+      margin-left: auto; background: var(--panel-2); color: var(--text);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 4px 12px; font-size: 12px; cursor: pointer;
+    }
+    header .toggle.on { border-color: var(--accent); color: var(--accent); }
+    header .toggle + .toggle { margin-left: 8px; }
+    header .toggle.live { border-color: #a855f7; color: #c4b5fd; }
+    header .toggle.live.on { background: #7c3aed; border-color: #a855f7; color: #fff; animation: pulse 1.4s infinite; }
   </style>
 </head>
 <body>
   <header>
     <h1>Insurance Assistant</h1>
-    <span class="badge">orchestrated · KB + Policy agents</span>
+    <span class="badge">voice · KB + Policy agents</span>
+    <button id="speakToggle" class="toggle on" title="Toggle spoken replies">🔊 Speak replies: On</button>
+    <button id="liveToggle" class="toggle live" title="Real-time voice conversation with the Foundry agent" style="display:none">🎙️ Live voice</button>
   </header>
 
   <div id="chat">
@@ -123,14 +143,21 @@
     <div class="composer">
       <textarea id="input" placeholder="Ask about a policy, claim, or insurance concept..."
         autofocus></textarea>
+      <button class="mic" id="mic" title="Speak your question">🎤</button>
       <button class="send" id="send">Send</button>
     </div>
   </footer>
 
+  <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
   <script>
     const chat = document.getElementById("chat");
     const input = document.getElementById("input");
     const sendBtn = document.getElementById("send");
+    const micBtn = document.getElementById("mic");
+    const speakToggle = document.getElementById("speakToggle");
+    const SpeechSDK = window.SpeechSDK;
+    let speakReplies = true;
+    let speechCfg = null; // cached { token, region, language, voice, expires }
 
     function addMessage(role, text) {
       const msg = document.createElement("div");
@@ -166,6 +193,7 @@
         const data = await res.json();
         bubble.classList.remove("typing");
         bubble.textContent = data.answer || "(no answer)";
+        speak(data.answer || "");
       } catch (e) {
         bubble.classList.remove("typing");
         bubble.textContent = "Error: " + e.message;
@@ -182,6 +210,75 @@
       ask(q);
     }
 
+    // --- Voice (Azure Speech: speech-to-text in, text-to-speech out) ---
+    function plainText(md) {
+      return (md || "")
+        .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+        .replace(/[*_`#>]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    async function getSpeechToken() {
+      const now = Date.now();
+      if (speechCfg && speechCfg.expires > now) return speechCfg;
+      const res = await fetch("/api/speech/token");
+      if (!res.ok) throw new Error("speech unavailable (" + res.status + ")");
+      const d = await res.json();
+      speechCfg = Object.assign({}, d, { expires: now + 8 * 60 * 1000 });
+      return speechCfg;
+    }
+
+    async function startListening() {
+      if (!SpeechSDK) { addMessage("bot", "Voice not available: Speech SDK failed to load."); return; }
+      let cfg;
+      try { cfg = await getSpeechToken(); }
+      catch (e) { addMessage("bot", "Voice not available: " + e.message); return; }
+      const sc = SpeechSDK.SpeechConfig.fromAuthorizationToken(cfg.token, cfg.region);
+      sc.speechRecognitionLanguage = cfg.language;
+      const ac = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+      const recognizer = new SpeechSDK.SpeechRecognizer(sc, ac);
+      micBtn.classList.add("recording");
+      micBtn.disabled = true;
+      recognizer.recognizeOnceAsync(
+        (result) => {
+          micBtn.classList.remove("recording");
+          micBtn.disabled = false;
+          recognizer.close();
+          if (result.reason === SpeechSDK.ResultReason.RecognizedSpeech && result.text) {
+            ask(result.text);
+          } else {
+            addMessage("bot", "Sorry, I didn't catch that. Please try again.");
+          }
+        },
+        (err) => {
+          micBtn.classList.remove("recording");
+          micBtn.disabled = false;
+          recognizer.close();
+          addMessage("bot", "Voice error: " + err);
+        }
+      );
+    }
+
+    async function speak(text) {
+      if (!speakReplies || !SpeechSDK) return;
+      const words = plainText(text);
+      if (!words) return;
+      let cfg;
+      try { cfg = await getSpeechToken(); } catch { return; }
+      const sc = SpeechSDK.SpeechConfig.fromAuthorizationToken(cfg.token, cfg.region);
+      sc.speechSynthesisVoiceName = cfg.voice;
+      const synth = new SpeechSDK.SpeechSynthesizer(sc);
+      synth.speakTextAsync(words, () => synth.close(), () => synth.close());
+    }
+
+    micBtn.addEventListener("click", startListening);
+    speakToggle.addEventListener("click", () => {
+      speakReplies = !speakReplies;
+      speakToggle.classList.toggle("on", speakReplies);
+      speakToggle.textContent = speakReplies ? "🔊 Speak replies: On" : "🔈 Speak replies: Off";
+    });
+
     sendBtn.addEventListener("click", submit);
     input.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
@@ -194,6 +291,160 @@
         ask(e.target.textContent.trim());
       }
     });
+
+    // ------------------------------------------------------------------
+    // Live voice: real-time speech-to-speech with the Foundry agent via the
+    // Voice Live relay (/api/voicelive/ws). Completely separate from the typed
+    // /api/chat flow and the Speech-SDK mic above. PCM16 mono @ 24 kHz.
+    // ------------------------------------------------------------------
+    const liveToggle = document.getElementById("liveToggle");
+    const VL_RATE = 24000;
+    let vlWS = null, vlActive = false, vlVoice = "en-US-AvaNeural";
+    let vlMicCtx = null, vlMicStream = null, vlMicNode = null, vlSource = null;
+    let vlPlayCtx = null, vlPlayHead = 0;
+
+    function b64FromBytes(bytes) {
+      let bin = "";
+      const chunk = 0x8000;
+      for (let i = 0; i < bytes.length; i += chunk) {
+        bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+      }
+      return btoa(bin);
+    }
+    function bytesFromB64(b64) {
+      const bin = atob(b64);
+      const out = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+      return out;
+    }
+
+    async function initLiveVoice() {
+      try {
+        const res = await fetch("/api/voicelive/config");
+        if (!res.ok) return;
+        const d = await res.json();
+        if (d && d.enabled) {
+          if (d.voice) vlVoice = d.voice;
+          liveToggle.style.display = "";
+        }
+      } catch { /* live voice stays hidden */ }
+    }
+
+    function vlSetActive(on) {
+      vlActive = on;
+      liveToggle.classList.toggle("on", on);
+      liveToggle.textContent = on ? "Stop live voice" : "Live voice";
+    }
+
+    function vlQueueAudio(int16) {
+      if (!vlPlayCtx) return;
+      const f32 = new Float32Array(int16.length);
+      for (let i = 0; i < int16.length; i++) f32[i] = int16[i] / 32768;
+      const buf = vlPlayCtx.createBuffer(1, f32.length, VL_RATE);
+      buf.copyToChannel(f32, 0);
+      const src = vlPlayCtx.createBufferSource();
+      src.buffer = buf;
+      src.connect(vlPlayCtx.destination);
+      const now = vlPlayCtx.currentTime;
+      if (vlPlayHead < now) vlPlayHead = now;
+      src.start(vlPlayHead);
+      vlPlayHead += buf.duration;
+    }
+
+    function vlClearPlayback() {
+      // Barge-in: drop queued audio by resetting the playback context.
+      if (vlPlayCtx) { try { vlPlayCtx.close(); } catch {} }
+      vlPlayCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: VL_RATE });
+      vlPlayHead = 0;
+    }
+
+    function vlHandleEvent(ev) {
+      switch (ev.type) {
+        case "input_audio_buffer.speech_started":
+          vlClearPlayback();
+          break;
+        case "conversation.item.input_audio_transcription.completed":
+          if (ev.transcript) addMessage("user", ev.transcript);
+          break;
+        case "response.audio_transcript.done":
+          if (ev.transcript) addMessage("bot", ev.transcript);
+          break;
+        case "response.audio.delta":
+          if (ev.delta) {
+            const bytes = bytesFromB64(ev.delta);
+            vlQueueAudio(new Int16Array(bytes.buffer, bytes.byteOffset, bytes.byteLength >> 1));
+          }
+          break;
+        case "error":
+          addMessage("bot", "Live voice error: " + ((ev.error && ev.error.message) || "unknown"));
+          stopLiveVoice();
+          break;
+      }
+    }
+
+    async function startLiveVoice() {
+      vlSetActive(true);
+      try {
+        vlMicStream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1 } });
+      } catch (e) {
+        addMessage("bot", "Microphone access denied: " + e.message);
+        vlSetActive(false);
+        return;
+      }
+      vlClearPlayback();
+      const proto = location.protocol === "https:" ? "wss:" : "ws:";
+      vlWS = new WebSocket(proto + "//" + location.host + "/api/voicelive/ws");
+
+      vlWS.onopen = () => {
+        vlWS.send(JSON.stringify({
+          type: "session.update",
+          session: {
+            modalities: ["text", "audio"],
+            input_audio_format: "pcm16",
+            output_audio_format: "pcm16",
+            voice: { name: vlVoice, type: "azure-standard" },
+            turn_detection: { type: "server_vad" },
+            input_audio_transcription: { model: "azure-speech" }
+          }
+        }));
+        vlMicCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: VL_RATE });
+        vlSource = vlMicCtx.createMediaStreamSource(vlMicStream);
+        vlMicNode = vlMicCtx.createScriptProcessor(4096, 1, 1);
+        vlMicNode.onaudioprocess = (e) => {
+          if (!vlWS || vlWS.readyState !== 1) return;
+          const f32 = e.inputBuffer.getChannelData(0);
+          const i16 = new Int16Array(f32.length);
+          for (let i = 0; i < f32.length; i++) {
+            const s = Math.max(-1, Math.min(1, f32[i]));
+            i16[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+          }
+          const bytes = new Uint8Array(i16.buffer);
+          vlWS.send(JSON.stringify({ type: "input_audio_buffer.append", audio: b64FromBytes(bytes) }));
+        };
+        vlSource.connect(vlMicNode);
+        vlMicNode.connect(vlMicCtx.destination);
+        addMessage("bot", "Live voice on — start speaking. Click Stop live voice to end.");
+      };
+      vlWS.onmessage = (e) => { try { vlHandleEvent(JSON.parse(e.data)); } catch {} };
+      vlWS.onerror = () => { addMessage("bot", "Live voice connection error."); };
+      vlWS.onclose = () => { if (vlActive) stopLiveVoice(); };
+    }
+
+    function stopLiveVoice() {
+      vlSetActive(false);
+      try { if (vlMicNode) vlMicNode.disconnect(); } catch {}
+      try { if (vlSource) vlSource.disconnect(); } catch {}
+      try { if (vlMicCtx) vlMicCtx.close(); } catch {}
+      try { if (vlPlayCtx) vlPlayCtx.close(); } catch {}
+      if (vlMicStream) vlMicStream.getTracks().forEach((t) => t.stop());
+      if (vlWS && vlWS.readyState <= 1) { try { vlWS.close(); } catch {} }
+      vlMicNode = vlSource = vlMicCtx = vlPlayCtx = vlMicStream = vlWS = null;
+    }
+
+    liveToggle.addEventListener("click", () => {
+      if (vlActive) stopLiveVoice(); else startLiveVoice();
+    });
+    initLiveVoice();
   </script>
 </body>
 </html>

@@ -68,6 +68,36 @@ class Settings:
     storage_resource_id: str = os.getenv("AZURE_STORAGE_RESOURCE_ID", "")
     kb_container: str = os.getenv("AZURE_STORAGE_KB_CONTAINER", "kb-docs")
 
+    # --- Azure AI Speech (voice input/output) ---
+    # The browser Speech SDK does STT/TTS against the AI Services (Cognitive
+    # Services) account. The backend mints a short-lived, keyless Entra token
+    # for it (no keys shipped to the client). Region + resource ID identify the
+    # multi-service account; leave empty to disable the voice UI.
+    speech_region: str = os.getenv("SPEECH_REGION", "")
+    speech_resource_id: str = os.getenv("SPEECH_RESOURCE_ID", "")
+    speech_recognition_language: str = os.getenv("SPEECH_RECOGNITION_LANGUAGE", "en-US")
+    speech_synthesis_voice: str = os.getenv("SPEECH_SYNTHESIS_VOICE", "en-US-JennyNeural")
+
+    # --- Foundry Voice Live (real-time speech-to-speech agent) ---
+    # A separate live-voice mode that streams audio to the Voice Live API in
+    # agent mode, which drives the existing insurance-orchestrator Foundry agent
+    # (STT + LLM/tool-calling + TTS, fully managed). The browser can't set a
+    # WebSocket Authorization header, so the backend relays frames to Voice Live
+    # and adds a keyless Entra bearer token (managed identity). This is additive
+    # and does NOT affect the typed /api/chat ontology-router flow. Leave the
+    # endpoint empty to disable the live-voice mode.
+    voicelive_endpoint: str = os.getenv("VOICELIVE_ENDPOINT", "")
+    voicelive_api_version: str = os.getenv("VOICELIVE_API_VERSION", "2026-04-10")
+    voicelive_project_name: str = os.getenv("VOICELIVE_PROJECT_NAME", "")
+    # Which Foundry agent the voice session talks to (defaults to the delegating
+    # orchestrator so voice reaches the same KB + policy tools as typed chat).
+    voicelive_agent_name: str = os.getenv(
+        "VOICELIVE_AGENT_NAME", os.getenv("INSURANCE_ORCHESTRATOR_AGENT_NAME", "insurance-orchestrator")
+    )
+    # Standard Azure neural voice (DragonHD voices aren't available in every
+    # region, so default to a broadly-available standard voice).
+    voicelive_voice: str = os.getenv("VOICELIVE_VOICE", "en-US-AvaNeural")
+
     # --- Azure OpenAI / embeddings ---
     azure_openai_endpoint: str = os.getenv("AZURE_OPENAI_ENDPOINT", "")
     embedding_deployment: str = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
