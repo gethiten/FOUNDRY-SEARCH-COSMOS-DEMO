@@ -6,6 +6,18 @@ param location string = resourceGroup().location
 @description('Azure region for the Cosmos DB account. Defaults to location; override when a region is capacity-constrained.')
 param cosmosLocation string = location
 
+@description('Azure region for the App Service plan/app, VNet, and Cosmos private endpoint. Must match cosmosLocation so the private endpoint and VNet integration are co-located with Cosmos.')
+param appLocation string = cosmosLocation
+
+@description('Address space for the VNet that hosts the App Service integration and Cosmos private endpoint.')
+param vnetAddressPrefix string = '10.20.0.0/16'
+
+@description('Subnet prefix for the Cosmos private endpoint.')
+param privateEndpointSubnetPrefix string = '10.20.1.0/24'
+
+@description('Subnet prefix delegated to the App Service for regional VNet integration.')
+param appSubnetPrefix string = '10.20.2.0/24'
+
 @description('Name prefix used for all deployed resources (lowercase letters/numbers).')
 param namePrefix string = 'insrag'
 
@@ -42,6 +54,24 @@ param ontologyBlobContainerName string = 'ontology'
 @description('How often (seconds) the API polls the governed ontology blob for changes. 0 disables hot-reload.')
 param ontologyReloadSeconds int = 30
 
+@description('Speech-to-text recognition language for the voice UI.')
+param speechRecognitionLanguage string = 'en-US'
+
+@description('Text-to-speech neural voice for spoken replies in the voice UI.')
+param speechSynthesisVoice string = 'en-US-JennyNeural'
+
+@description('Foundry project name that hosts the orchestrator agent for the Voice Live (real-time speech-to-speech) mode.')
+param voiceLiveProjectName string = ''
+
+@description('Foundry agent name targeted by the Voice Live mode.')
+param voiceLiveAgentName string = 'insurance-orchestrator'
+
+@description('Voice Live API version.')
+param voiceLiveApiVersion string = '2026-04-10'
+
+@description('Neural voice used for the Voice Live real-time speech-to-speech mode.')
+param voiceLiveVoice string = 'en-US-AvaNeural'
+
 @description('Cosmos DB database name.')
 param cosmosDatabaseName string = 'insurance'
 
@@ -60,12 +90,19 @@ var storageAccountName = '${namePrefix}st${uniqueString(resourceGroup().id)}'
 var planName = '${namePrefix}-plan'
 var apiAppName = '${namePrefix}-api-${uniqueString(resourceGroup().id)}'
 var appInsightsName = '${namePrefix}-appi'
+var vnetName = '${namePrefix}-vnet'
+var peSubnetName = 'snet-pe'
+var appSubnetName = 'snet-app'
+var cosmosPrivateEndpointName = '${namePrefix}-cosmos-pe'
+var cosmosPrivateDnsZoneName = 'privatelink.documents.azure.com'
 
 // Built-in role definition ids
 var searchIndexDataReaderRoleId = '1407120a-92aa-4202-b7e9-c0e197c71c8f'
 var cognitiveServicesOpenAiUserRoleId = '5e0bd9bd-7b93-4f28-af87-19fc36ad61bd'
 var cosmosDataContributorRoleId = '00000000-0000-0000-0000-000000000002'
 var storageBlobDataReaderRoleId = '2a2b9908-6ea1-4ae2-8e65-a410df84e7d1'
+var speechUserRoleId = 'f2dc8367-1007-4938-bd23-fe263f013447'
+var cognitiveServicesUserRoleId = 'a97b65f3-24c7-4388-baec-2e87618995b0'
 
 resource search 'Microsoft.Search/searchServices@2024-06-01-preview' = {
   name: searchServiceName
@@ -99,7 +136,11 @@ resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' = {
   properties: {
     databaseAccountOfferType: 'Standard'
     enableAutomaticFailover: false
-    disableLocalAuth: false
+    // Keyless (Entra-only) and private-only access are enforced by Azure Policy
+    // in this subscription (CosmosDB_LocalAuth_Modify / CosmosDB_PublicNetwork_Modify).
+    // Declaring them here keeps the template aligned with the enforced state.
+    disableLocalAuth: true
+    publicNetworkAccess: 'Disabled'
     capabilities: [
       {
         name: 'EnableServerless'
@@ -240,13 +281,108 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
+// Private networking: a VNet with a delegated App Service subnet and a subnet
+// for the Cosmos private endpoint. Because Cosmos public network access is
+// disabled (policy-enforced), the app reaches Cosmos over a private endpoint
+// via regional VNet integration.
+resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = if (deployApp) {
+  name: vnetName
+  location: appLocation
+  tags: tags
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        vnetAddressPrefix
+      ]
+    }
+    subnets: [
+      {
+        name: peSubnetName
+        properties: {
+          addressPrefix: privateEndpointSubnetPrefix
+          privateEndpointNetworkPolicies: 'Disabled'
+        }
+      }
+      {
+        name: appSubnetName
+        properties: {
+          addressPrefix: appSubnetPrefix
+          delegations: [
+            {
+              name: 'webapp'
+              properties: {
+                serviceName: 'Microsoft.Web/serverFarms'
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+resource cosmosPrivateEndpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = if (deployApp) {
+  name: cosmosPrivateEndpointName
+  location: appLocation
+  tags: tags
+  properties: {
+    subnet: {
+      id: '${vnet.id}/subnets/${peSubnetName}'
+    }
+    privateLinkServiceConnections: [
+      {
+        name: 'insrag-cosmos-conn'
+        properties: {
+          privateLinkServiceId: cosmos.id
+          groupIds: [
+            'Sql'
+          ]
+        }
+      }
+    ]
+  }
+}
+
+resource cosmosPrivateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = if (deployApp) {
+  name: cosmosPrivateDnsZoneName
+  location: 'global'
+  tags: tags
+}
+
+resource cosmosDnsLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = if (deployApp) {
+  parent: cosmosPrivateDnsZone
+  name: '${namePrefix}-cosmos-dnslink'
+  location: 'global'
+  properties: {
+    registrationEnabled: false
+    virtualNetwork: {
+      id: vnet.id
+    }
+  }
+}
+
+resource cosmosPeDnsGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2024-05-01' = if (deployApp) {
+  parent: cosmosPrivateEndpoint
+  name: 'cosmos-zg'
+  properties: {
+    privateDnsZoneConfigs: [
+      {
+        name: 'documents'
+        properties: {
+          privateDnsZoneId: cosmosPrivateDnsZone.id
+        }
+      }
+    ]
+  }
+}
+
 resource plan 'Microsoft.Web/serverfarms@2023-12-01' = if (deployApp) {
   name: planName
-  location: location
+  location: appLocation
   tags: tags
   sku: {
-    name: 'F1'
-    tier: 'Free'
+    name: 'B1'
+    tier: 'Basic'
   }
   kind: 'linux'
   properties: {
@@ -256,7 +392,7 @@ resource plan 'Microsoft.Web/serverfarms@2023-12-01' = if (deployApp) {
 
 resource apiApp 'Microsoft.Web/sites@2023-12-01' = if (deployApp) {
   name: apiAppName
-  location: location
+  location: appLocation
   tags: tags
   kind: 'app,linux'
   identity: {
@@ -265,6 +401,7 @@ resource apiApp 'Microsoft.Web/sites@2023-12-01' = if (deployApp) {
   properties: {
     serverFarmId: plan.id
     httpsOnly: true
+    virtualNetworkSubnetId: '${vnet.id}/subnets/${appSubnetName}'
     siteConfig: {
       linuxFxVersion: linuxFxVersion
       appCommandLine: 'python -m uvicorn insurance_rag_agent.main:app --app-dir src --host 0.0.0.0 --port 8000'
@@ -280,6 +417,22 @@ resource apiApp 'Microsoft.Web/sites@2023-12-01' = if (deployApp) {
         {
           name: 'PYTHONPATH'
           value: '/home/site/wwwroot/src'
+        }
+        {
+          name: 'PYTHONUNBUFFERED'
+          value: '1'
+        }
+        {
+          // Route all app outbound traffic through the VNet so the Cosmos
+          // private endpoint (private DNS) is used instead of the public URL.
+          name: 'WEBSITE_VNET_ROUTE_ALL'
+          value: '1'
+        }
+        {
+          // Azure-provided DNS so privatelink.documents.azure.com resolves to
+          // the private endpoint from within the app.
+          name: 'WEBSITE_DNS_SERVER'
+          value: '168.63.129.16'
         }
         {
           name: 'APP_ENV'
@@ -337,6 +490,42 @@ resource apiApp 'Microsoft.Web/sites@2023-12-01' = if (deployApp) {
           name: 'ONTOLOGY_RELOAD_SECONDS'
           value: string(ontologyReloadSeconds)
         }
+        {
+          name: 'SPEECH_REGION'
+          value: foundryAccount.?location ?? location
+        }
+        {
+          name: 'SPEECH_RESOURCE_ID'
+          value: !empty(foundryAccountName) ? foundryAccount.id : ''
+        }
+        {
+          name: 'SPEECH_RECOGNITION_LANGUAGE'
+          value: speechRecognitionLanguage
+        }
+        {
+          name: 'SPEECH_SYNTHESIS_VOICE'
+          value: speechSynthesisVoice
+        }
+        {
+          name: 'VOICELIVE_ENDPOINT'
+          value: foundryAccount.?properties.endpoint ?? ''
+        }
+        {
+          name: 'VOICELIVE_PROJECT_NAME'
+          value: voiceLiveProjectName
+        }
+        {
+          name: 'VOICELIVE_AGENT_NAME'
+          value: voiceLiveAgentName
+        }
+        {
+          name: 'VOICELIVE_API_VERSION'
+          value: voiceLiveApiVersion
+        }
+        {
+          name: 'VOICELIVE_VOICE'
+          value: voiceLiveVoice
+        }
       ]
     }
   }
@@ -379,6 +568,28 @@ resource appFoundryUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01'
   }
 }
 
+// App -> mint keyless Speech tokens (STT/TTS) for the voice UI
+resource appSpeechUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (!empty(foundryAccountName) && deployApp) {
+  name: guid(foundryAccount.id, apiApp!.id, speechUserRoleId)
+  scope: foundryAccount
+  properties: {
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', speechUserRoleId)
+    principalId: apiApp!.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+// App -> connect to the Voice Live real-time endpoint (agent mode)
+resource appCognitiveServicesUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (!empty(foundryAccountName) && deployApp) {
+  name: guid(foundryAccount.id, apiApp!.id, cognitiveServicesUserRoleId)
+  scope: foundryAccount
+  properties: {
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', cognitiveServicesUserRoleId)
+    principalId: apiApp!.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
 // Search service -> call Azure OpenAI embeddings for integrated vectorization
 resource searchFoundryUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (!empty(foundryAccountName)) {
   name: guid(foundryAccount.id, search.id, cognitiveServicesOpenAiUserRoleId)
@@ -412,3 +623,5 @@ output storageAccountName string = storage.name
 output storageBlobEndpoint string = storage.properties.primaryEndpoints.blob
 output storageResourceId string = storage.id
 output kbBlobContainerName string = kbContainer.name
+output vnetName string = deployApp ? vnet.name : ''
+output cosmosPrivateEndpointName string = deployApp ? cosmosPrivateEndpoint.name : ''

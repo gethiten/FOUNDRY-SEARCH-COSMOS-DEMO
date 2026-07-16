@@ -33,9 +33,10 @@ same data plane:
 
 1. **In-process agent** — a single FastAPI-hosted `agent-framework` agent that
    calls Search + Cosmos as function tools (`POST /query`).
-2. **Foundry multi-agent system** — a delegating orchestrator agent that routes
-   to two leaf agents (knowledge base + policy), surfaced through a browser chat
-   UI (`POST /api/chat`).
+2. **Foundry multi-agent system** — a browser chat UI (`POST /api/chat`) whose
+   requests are routed by a **deterministic domain ontology** to two Foundry
+   **hosted** leaf agents (knowledge base + policy). An optional LLM *delegating
+   orchestrator* agent (`POST /api/orchestrator`) is kept for comparison.
 
 ---
 
@@ -45,16 +46,18 @@ same data plane:
 |-----------|------|---------------|---------|
 | **FastAPI app** (`insurance_rag_agent`) | Python 3.13 / Uvicorn | App Service `<api-app>` (Linux B1) | Serves `/query`, `/api/*` Cosmos REST, `/api/agents/*` delegation, `/api/chat`, and the chat UI |
 | **In-process agent** | `agent-framework` Agent (`gpt-5-mini`) | Inside the FastAPI app | Agentic RAG via Search + Cosmos function tools |
+| **Ontology router** | In-process (`ontology.py` + governed `ontology.json`) | Inside the FastAPI app | Deterministically routes `/api/chat` to the KB and/or policy hosted agent(s) |
 | **`kb-hosted-agent`** | Foundry **hosted** agent (containerized custom code, `gpt-4.1-mini`) | Foundry project | Queries Azure AI Search directly |
 | **`policy-hosted-agent`** | Foundry **hosted** agent (`gpt-4.1-mini`) | Foundry project | Calls the app's `/api/*` Cosmos endpoints over HTTP |
-| **`insurance-orchestrator`** | Foundry **prompt** agent (`gpt-4.1-mini`) | Foundry project | Delegates to the two hosted agents via an OpenAPI tool → `/api/agents/{kb,policy}` |
+| **`insurance-orchestrator`** | Foundry **prompt** agent (`gpt-4.1-mini`) | Foundry project | Optional (`/api/orchestrator`): delegates to the two hosted agents via an OpenAPI tool → `/api/agents/{kb,policy}` |
 | **`kb-search-agent`** | Foundry prompt agent | Foundry project | Native Azure AI Search tool (portal demo) |
 | **`policy-cosmos-agent`** | Foundry prompt agent | Foundry project | OpenAPI tool → `/api/*` (portal demo) |
 | **`orchestrator-agent`** | Foundry prompt agent | Foundry project | Combined-tool router (Search + OpenAPI in one agent) |
 | **Azure AI Search** `<search-service>` | PaaS | — | `insurance-kb` index, hybrid vector + semantic |
-| **Azure Cosmos DB** `<cosmos-account>` | PaaS | — | `insurance` DB: policies / claims / customers |
-| **Azure Blob Storage** `<storage-account>` | PaaS | — | KB source docs for the Search indexer |
+| **Azure Cosmos DB** `<cosmos-account>` | PaaS | — | `insurance` DB: policies / claims / customers. Private + keyless (policy-enforced) |
+| **Azure Blob Storage** `<storage-account>` | PaaS | — | KB source docs (`kb-docs`) + governed `ontology` blob |
 | **Azure OpenAI / Foundry** `<foundry-account>` | PaaS | — | Chat + embedding model deployments |
+| **VNet + Cosmos private endpoint** | `Microsoft.Network/*` | — | Private path App Service → Cosmos (public access policy-disabled); private DNS zone `privatelink.documents.azure.com` |
 | **Application Insights** | PaaS | — | gen_ai traces from the app and hosted agents |
 
 Model deployments (all in the Foundry account):
@@ -83,21 +86,21 @@ flowchart TB
         A1 -->|Cosmos tools| C1[(Cosmos DB)]
     end
 
-    subgraph surface2["Surface 2 — Foundry multi-agent"]
+    subgraph surface2["Surface 2 — Foundry multi-agent (chat UI)"]
         UI["Chat UI (GET /)"] --> CH["POST /api/chat"]
-        CH --> ORCH["insurance-orchestrator (prompt agent)"]
-        ORCH -->|OpenAPI tool| EKB["POST /api/agents/kb"]
-        ORCH -->|OpenAPI tool| EPOL["POST /api/agents/policy"]
-        EKB --> HKB["kb-hosted-agent"]
-        EPOL --> HPOL["policy-hosted-agent"]
+        CH --> RT["Ontology router<br/>(ontology.json)"]
+        RT -->|policy concepts| HPOL["policy-hosted-agent"]
+        RT -->|kb concepts| HKB["kb-hosted-agent"]
         HKB --> S2[(Azure AI Search)]
         HPOL -->|"/api/* over HTTP"| C2[(Cosmos DB)]
     end
 ```
 
 Both surfaces are served by the **same** FastAPI app and hit the **same** Search
-index and Cosmos containers. The Foundry portal also exposes the prompt agents
-(`kb-search-agent`, `policy-cosmos-agent`, `orchestrator-agent`) for a
+index and Cosmos containers. `/api/chat` (the chat UI) routes deterministically
+with the domain ontology; the optional LLM delegating orchestrator is exposed
+separately at `/api/orchestrator`. The Foundry portal also exposes the prompt
+agents (`kb-search-agent`, `policy-cosmos-agent`, `orchestrator-agent`) for a
 no-code/portal demo.
 
 ---
@@ -119,26 +122,52 @@ process. Retrieval providers:
 [search_provider.py](src/insurance_rag_agent/providers/search_provider.py),
 [cosmos_provider.py](src/insurance_rag_agent/providers/cosmos_provider.py).
 
-### 4.2 Foundry multi-agent (`/api/chat`)
+### 4.2 Ontology-routed chat (`/api/chat`) — the chat UI default
 
 ```mermaid
 flowchart TD
     browser["Browser chat UI"] -->|POST /api/chat| chat["/api/chat"]
-    chat -->|Responses API invoke| orch["insurance-orchestrator<br/>(prompt agent, gpt-4.1-mini)"]
+    chat -->|route(question)| onto["Ontology router<br/>(ontology.py + ontology.json)"]
+    onto -->|policy concepts| polh["policy-hosted-agent"]
+    onto -->|kb concepts| kbh["kb-hosted-agent"]
+    kbh -->|query key / semantic hybrid| search[(Azure AI Search)]
+    polh -->|HTTP GET /api/*| cosmosapi["/api/policies, /api/claims, ..."]
+    cosmosapi --> cosmos[(Cosmos DB)]
+```
+
+`/api/chat` routes each question with a **deterministic domain ontology**
+([ontology.py](src/insurance_rag_agent/ontology.py)) instead of an extra LLM hop:
+concepts (Policy, Claim, Customer, CoverageSummary, Terminology, ...) each own a
+specialist agent (`policy` → Cosmos hosted agent, `kb` → Search hosted agent).
+The question is matched against each concept's id-patterns (regex) and labels,
+the owning agent(s) are invoked via the Responses API, and their answers are
+merged. Routing is explainable and fast (no nested model turn), and the response
+includes the matched concepts and the agents it routed to.
+
+The ontology metadata lives in **`ontology.json`** (governed) — it can be edited
+without a code change. The app loads it from a governed blob (`ONTOLOGY_BLOB_URL`,
+read keyless via managed identity) or a local path, with a packaged copy as an
+always-available fallback, and hot-reloads on change (`ONTOLOGY_RELOAD_SECONDS`).
+
+### 4.3 Delegating orchestrator (`/api/orchestrator`) — optional
+
+```mermaid
+flowchart TD
+    caller["POST /api/orchestrator"] -->|Responses API invoke| orch["insurance-orchestrator<br/>(prompt agent, gpt-4.1-mini)"]
     orch -->|OpenAPI: askKnowledgeBase| kbep["/api/agents/kb"]
     orch -->|OpenAPI: askPolicyData| polep["/api/agents/policy"]
     kbep -->|Responses API invoke| kbh["kb-hosted-agent"]
     polep -->|Responses API invoke| polh["policy-hosted-agent"]
-    kbh -->|query key / semantic hybrid| search[(Azure AI Search)]
-    polh -->|HTTP GET /api/*| cosmosapi["/api/policies, /api/claims, ..."]
-    cosmosapi --> cosmos[(Cosmos DB)]
+    kbh --> search[(Azure AI Search)]
+    polh -->|HTTP GET /api/*| cosmos[(Cosmos DB)]
 ```
 
 This is **true agent-to-agent delegation**: the orchestrator never touches data
 directly. It calls back into the app's `/api/agents/*` endpoints (its OpenAPI
 tool), and each of those invokes a hosted leaf agent through the project's
 OpenAI-compatible **Responses API** (agent-scoped base URL
-`{project_endpoint}/agents/{name}/endpoint/protocols/openai`).
+`{project_endpoint}/agents/{name}/endpoint/protocols/openai`). It's slower
+(nested model hop), so the chat UI uses the ontology router instead.
 
 The delegation endpoints are **synchronous** FastAPI handlers so they run in the
 threadpool — the blocking Responses call doesn't block the event loop, and the
@@ -148,7 +177,7 @@ re-entrant *app → orchestrator → app → leaf-agent* pattern works concurren
 
 ## 5. Request flows
 
-### 5.1 Combined question (both sources)
+### 5.1 Combined question (both sources) via `/api/chat`
 
 `"Is policy POL-001 active, and explain collision coverage?"`
 
@@ -156,40 +185,39 @@ re-entrant *app → orchestrator → app → leaf-agent* pattern works concurren
 sequenceDiagram
     participant U as Browser
     participant API as FastAPI /api/chat
-    participant O as insurance-orchestrator
-    participant PE as /api/agents/policy
-    participant KE as /api/agents/kb
+    participant R as Ontology router
     participant PH as policy-hosted-agent
     participant KH as kb-hosted-agent
     participant CX as Cosmos DB
     participant SX as AI Search
 
     U->>API: question
-    API->>O: Responses.create(input)
-    O->>PE: askPolicyData("POL-001 status")
-    PE->>PH: Responses.create
+    API->>R: route(question)
+    R-->>API: agents = [policy, kb]
+    API->>PH: Responses.create("POL-001 status")
     PH->>CX: GET /api/policies/POL-001
     CX-->>PH: {status: Active, ...}
-    PH-->>PE: "POL-001 is Active"
-    O->>KE: askKnowledgeBase("collision coverage")
-    KE->>KH: Responses.create
+    PH-->>API: "POL-001 is Active"
+    API->>KH: Responses.create("collision coverage")
     KH->>SX: semantic hybrid search
     SX-->>KH: glossary passages
-    KH-->>KE: grounded definition + source
-    O-->>API: combined answer
-    API-->>U: answer
+    KH-->>API: grounded definition + source
+    API-->>U: merged answer
 ```
 
-### 5.2 Routing rules (orchestrator instructions)
+### 5.2 Routing rules (domain ontology)
 
-| Question shape | Tool called |
-|----------------|-------------|
-| Specific policy / claim / customer data | `askPolicyData` → policy agent |
-| General / educational / terminology | `askKnowledgeBase` → KB agent |
-| Both | both, then combine |
+| Question shape | Concept(s) | Agent |
+|----------------|-----------|-------|
+| Specific policy / claim / customer data, coverage totals | Policy, Claim, Customer, CoverageSummary | policy hosted agent |
+| General / educational / terminology / coverage types / claims process | Terminology, CoverageType, ClaimsProcess | kb hosted agent |
+| Both | — | both, then merge |
 
-The orchestrator is delegation-only — it is instructed never to answer from its
-own knowledge.
+Routing is a pure function of the question text (regex id-patterns + label
+substrings in `ontology.json`); when nothing matches, the ontology's
+`default_agent` (kb) is used. The optional `/api/orchestrator` instead lets the
+LLM orchestrator decide, and is instructed never to answer from its own
+knowledge.
 
 ---
 
@@ -277,6 +305,17 @@ code (the one exception is the Search query key used by the hosted KB agent; see
 > In this tenant the role display name "Azure AI User" is absent; its GUID
 > `53ca6127-...` resolves to **"Foundry User"**. Assign by GUID.
 
+### 7.3 Network isolation
+
+Cosmos DB has `publicNetworkAccess=Disabled` (Azure Policy-enforced), so the
+App Service reaches it over a **private endpoint**: the app joins `snet-app`
+(delegated to `Microsoft.Web/serverFarms`) via regional VNet integration, the
+private endpoint lives in `snet-pe`, and the `privatelink.documents.azure.com`
+private DNS zone (linked to the VNet) resolves the account host to the
+endpoint's private IP. `WEBSITE_VNET_ROUTE_ALL=1` forces all app outbound
+through the VNet. Search and Storage remain publicly reachable (keyless via
+managed identity).
+
 ---
 
 ## 8. Configuration reference
@@ -302,7 +341,11 @@ App Service application settings in Azure).
 | `POLICY_API_BASE_URL` | — | Policy agent OpenAPI server URL (must be public HTTPS) |
 | `HOSTED_KB_AGENT_NAME` | `kb-hosted-agent` | `/api/agents/kb` |
 | `HOSTED_POLICY_AGENT_NAME` | `policy-hosted-agent` | `/api/agents/policy` |
-| `INSURANCE_ORCHESTRATOR_AGENT_NAME` | `insurance-orchestrator` | `/api/chat` |
+| `INSURANCE_ORCHESTRATOR_AGENT_NAME` | `insurance-orchestrator` | `/api/orchestrator` |
+| `ONTOLOGY_BLOB_URL` | — | Governed ontology source (keyless blob) |
+| `ONTOLOGY_PATH` | packaged `ontology.json` | Local/governed ontology file fallback |
+| `ONTOLOGY_RELOAD_SECONDS` | `30` | Ontology hot-reload poll interval (0 disables) |
+| `WEBSITE_VNET_ROUTE_ALL` / `WEBSITE_DNS_SERVER` | `1` / `168.63.129.16` | Route app outbound through the VNet; resolve the Cosmos private endpoint |
 | `APPLICATIONINSIGHTS_CONNECTION_STRING` | — | Tracing |
 
 Hosted-agent env vars are declared in each agent's
@@ -341,13 +384,20 @@ Hosted-agent env vars are declared in each agent's
   the App Service MI handles that auth path.
 - **Pull-based blob indexer** replaced an earlier push/chunk-in-Python approach
   so Search owns chunking + vectorization (integrated vectorization).
-- **Cosmos firewall**: App Service outbound is allowed via the special
-  `0.0.0.0` "accept from Azure datacenters" IP rule rather than enumerating
-  outbound IPs.
-- **Two orchestrator styles** exist: a *combined-tool* router
-  (`orchestrator-agent`, one agent with both tools) and a *delegating*
-  orchestrator (`insurance-orchestrator`, calls two separate leaf agents). The
-  chat UI uses the delegating one.
+- **Cosmos is private + keyless (Azure Policy)**: two `modify`-effect policies
+  (`CosmosDB_PublicNetwork_Modify`, `CosmosDB_LocalAuth_Modify`) force
+  `publicNetworkAccess=Disabled` and `disableLocalAuth=true` on Cosmos accounts
+  and silently revert any attempt to re-enable public access. The App Service
+  therefore reaches Cosmos over a **private endpoint** via regional VNet
+  integration (`WEBSITE_VNET_ROUTE_ALL=1` + Azure DNS + the
+  `privatelink.documents.azure.com` zone), not a public IP allowlist. An earlier
+  `0.0.0.0` "accept from Azure datacenters" firewall rule no longer works once
+  the policy is in place.
+- **Deterministic ontology router for `/api/chat`**: routing the chat UI through
+  a governed domain ontology (`ontology.json`) instead of an LLM orchestrator is
+  explainable, governable, and avoids a nested model hop. The LLM *delegating*
+  orchestrator (`insurance-orchestrator`, `/api/orchestrator`) and the
+  *combined-tool* router (`orchestrator-agent`) are kept for comparison.
 
 ---
 

@@ -65,8 +65,9 @@ python -c "from agent_framework import Agent; from agent_framework_foundry impor
 
 ## Step 2 — Provision Azure infrastructure
 
-Provisions Azure AI Search, Cosmos DB, Blob Storage, App Service, and the
-required RBAC role assignments ([infra/main.bicep](infra/main.bicep)).
+Provisions Azure AI Search, Cosmos DB, Blob Storage, App Service, the VNet +
+Cosmos private endpoint, and the required RBAC role assignments
+([infra/main.bicep](infra/main.bicep)).
 
 ```powershell
 az login
@@ -133,6 +134,13 @@ python scripts\setup_search_index.py    # Blob -> Search index (chunk + vectoriz
 ~30 policies / 20 claims / 100 customers in Cosmos and ~9 chunks in
 `insurance-kb`.
 
+> **Private Cosmos:** if the subscription enforces private Cosmos DB (public
+> access disabled by Azure Policy), `load_cosmos_data.py` cannot reach Cosmos
+> from your workstation. Run it from inside the VNet (VM/jumpbox) or a network
+> with a private endpoint to the Cosmos account. The Search + Blob steps are
+> unaffected. See
+> [infra/README.md](infra/README.md#governance-note--cosmos-is-private--keyless-enforced-by-policy).
+
 ---
 
 ## Step 6 — Smoke test the data plane
@@ -193,7 +201,7 @@ python scripts\setup_policy_agent.py
 # Combined-tool router
 python scripts\setup_orchestrator_agent.py
 
-# Delegating orchestrator used by the chat UI (/api/chat)
+# Delegating orchestrator (optional, exposed at /api/orchestrator)
 python scripts\setup_insurance_orchestrator_agent.py
 ```
 
@@ -283,7 +291,7 @@ Open the chat UI at `https://<apiAppName>.azurewebsites.net/` and try:
 |----------|-----------|
 | "What does collision coverage mean?" | KB agent only |
 | "Is policy POL-001 active?" | Policy agent only |
-| "Is policy POL-001 active, and explain collision coverage?" | Both (delegation) |
+| "Is policy POL-001 active, and explain collision coverage?" | Both (ontology router) |
 
 Or via API:
 
@@ -305,7 +313,7 @@ Invoke-RestMethod "$u/api/chat"          -Method Post -ContentType application/j
 | Symptom | Cause / Fix |
 |---------|-------------|
 | `COSMOS_ENDPOINT is not set` | `.env` loaded too late — `config.py` calls `load_dotenv` at import; ensure `.env` exists and `$env:PYTHONPATH="src"` is set |
-| Cosmos `Forbidden ... blocked by firewall` | App Service outbound blocked — enable the `0.0.0.0` "from Azure datacenters" IP rule on the Cosmos account |
+| Cosmos `Forbidden ... blocked by firewall` | Public access is disabled (often Azure Policy-enforced) — the app reaches Cosmos via the **private endpoint + VNet integration** in Bicep. Ensure `WEBSITE_VNET_ROUTE_ALL=1`, the app is VNet-integrated, and the `privatelink.documents.azure.com` zone is linked to the VNet. Enabling public access won't stick if a `modify` policy reverts it |
 | Hosted KB agent `403 Forbidden` from Search | Container cached a stale credential — use the Search query key (`AZURE_SEARCH_API_KEY` in `agent.yaml`) and redeploy with a code change |
 | "Azure AI Search not supported by the selected model" | The agent is on a `gpt-5` model — move it to `gpt-4.1-mini` |
 | Backend can't invoke agents | App Service MI needs the **Foundry User** role (`53ca6127-...`) on the Foundry account |

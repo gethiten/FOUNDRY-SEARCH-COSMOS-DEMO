@@ -26,18 +26,17 @@ The repo ships two ways to deliver the same experience over the same data plane:
 
 1. **In-process agent** — a single FastAPI-hosted `agent-framework` agent
    (`gpt-5-mini`) that calls Search + Cosmos as function tools (`POST /query`).
-2. **Foundry multi-agent system** — a delegating orchestrator (`gpt-4.1-mini`)
-   that routes to two **hosted** leaf agents (knowledge base + policy), surfaced
-   through a browser chat UI (`GET /` → `POST /api/chat`).
+2. **Foundry multi-agent system** — a browser chat UI (`GET /` → `POST /api/chat`)
+   that routes each question through a **deterministic domain ontology** to two
+   **hosted** leaf agents (knowledge base + policy). An optional LLM delegating
+   orchestrator (`gpt-4.1-mini`) is available at `POST /api/orchestrator`.
 
 ```mermaid
 flowchart TD
     UI["Chat UI — GET /"] --> CHAT["POST /api/chat"]
-    CHAT --> ORCH["insurance-orchestrator<br/>(prompt agent)"]
-    ORCH -->|askKnowledgeBase| KBEP["/api/agents/kb"]
-    ORCH -->|askPolicyData| POLEP["/api/agents/policy"]
-    KBEP --> KBH["kb-hosted-agent"]
-    POLEP --> POLH["policy-hosted-agent"]
+    CHAT --> RT["Ontology router<br/>(ontology.json)"]
+    RT -->|kb concepts| KBH["kb-hosted-agent"]
+    RT -->|policy concepts| POLH["policy-hosted-agent"]
     KBH --> SEARCH[(Azure AI Search<br/>insurance-kb)]
     POLH -->|/api/* over HTTP| COSMOS[(Cosmos DB<br/>policies/claims/customers)]
 ```
@@ -62,7 +61,7 @@ The Foundry portal also exposes prompt agents (`kb-search-agent`,
 | [scripts/setup_kb_agent.py](scripts/setup_kb_agent.py) · [setup_policy_agent.py](scripts/setup_policy_agent.py) · [setup_orchestrator_agent.py](scripts/setup_orchestrator_agent.py) · [setup_insurance_orchestrator_agent.py](scripts/setup_insurance_orchestrator_agent.py) | Register the Foundry prompt agents |
 | [scripts/smoke_test.py](scripts/smoke_test.py) | Local check of both RAG sources |
 | [scripts/deploy/](scripts/deploy) | `deploy-infra.ps1`, `deploy-app.ps1`, `grant-dev-access.ps1`, `create-search-connection.ps1` |
-| [infra/main.bicep](infra/main.bicep) | Search + Cosmos + Storage + App Service + RBAC |
+| [infra/main.bicep](infra/main.bicep) | Search + Cosmos + Storage + App Service + VNet/private endpoint + RBAC |
 | [openapi/copilot-studio-insurance.openapi.yaml](openapi/copilot-studio-insurance.openapi.yaml) | Copilot Studio custom-connector contract |
 
 ## Data
@@ -111,6 +110,12 @@ uvicorn insurance_rag_agent.main:app --app-dir src --reload --port 8000
 Full instructions — including deploying the FastAPI app to App Service,
 registering the Foundry prompt agents, and deploying the two hosted agents — are
 in **[SETUP.md](SETUP.md)**.
+
+> **Note:** in subscriptions that enforce private Cosmos DB (public access
+> disabled by Azure Policy), the data-load scripts (step 4) and local `/query`
+> cannot reach Cosmos from a dev machine — run them from inside the VNet or a
+> network with a private endpoint to Cosmos. See
+> [infra/README.md](infra/README.md#governance-note--cosmos-is-private--keyless-enforced-by-policy).
 
 ## Try it
 
